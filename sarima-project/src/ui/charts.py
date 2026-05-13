@@ -236,7 +236,6 @@ def chart_bar_changes(ts: pd.Series, title: str = "Perubahan Antar Periode") -> 
 
 def chart_multi_category_trend(df: pd.DataFrame, col_period: str, col_value: str, col_category: str, title: str = "Tren Multi-Kategori") -> go.Figure:
     """Grafik perbandingan tren historis untuk seluruh kategori."""
-    # Plotly express lebih mudah untuk multi-line berdasarkan kolom kategori
     fig = px.line(
         df,
         x=col_period,
@@ -244,8 +243,10 @@ def chart_multi_category_trend(df: pd.DataFrame, col_period: str, col_value: str
         color=col_category,
         markers=True,
     )
-    
-    # Salin base layout tapi override legend agar tampil di sebelah kanan (seperti screenshot)
+
+    # Bangun layout dari _LAYOUT_BASE tapi override key yang bentrok
+    # (margin dan legend) di dalam dict sebelum di-unpack agar tidak
+    # terjadi "multiple values for keyword argument".
     layout = _LAYOUT_BASE.copy()
     layout["legend"] = dict(
         orientation="v",
@@ -257,13 +258,11 @@ def chart_multi_category_trend(df: pd.DataFrame, col_period: str, col_value: str
         bordercolor="rgba(0,0,0,0.1)",
         borderwidth=1,
     )
-    
-    fig.update_layout(
-        **layout,
-        title=dict(text=title, font=dict(size=16, color=COLOR_PRIMARY, weight=700), x=0),
-        xaxis_title="Periode",
-        yaxis_title="Nilai",
-        height=500,
-        margin=dict(l=20, r=150, t=50, b=20), # Beri ruang di kanan untuk legend
-    )
+    layout["margin"] = dict(l=20, r=160, t=50, b=20)  # ruang kanan untuk legend
+    layout["height"] = 500
+    layout["title"] = dict(text=title, font=dict(size=16, color=COLOR_PRIMARY, weight=700), x=0)
+    layout["xaxis_title"] = "Periode"
+    layout["yaxis_title"] = "Nilai"
+
+    fig.update_layout(**layout)
     return fig

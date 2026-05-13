@@ -232,3 +232,38 @@ def chart_bar_changes(ts: pd.Series, title: str = "Perubahan Antar Periode") -> 
         height=300,
     )
     return fig
+
+
+def chart_multi_category_trend(df: pd.DataFrame, col_period: str, col_value: str, col_category: str, title: str = "Tren Multi-Kategori") -> go.Figure:
+    """Grafik perbandingan tren historis untuk seluruh kategori."""
+    # Plotly express lebih mudah untuk multi-line berdasarkan kolom kategori
+    fig = px.line(
+        df,
+        x=col_period,
+        y=col_value,
+        color=col_category,
+        markers=True,
+    )
+    
+    # Salin base layout tapi override legend agar tampil di sebelah kanan (seperti screenshot)
+    layout = _LAYOUT_BASE.copy()
+    layout["legend"] = dict(
+        orientation="v",
+        yanchor="top",
+        y=1,
+        xanchor="left",
+        x=1.02,
+        bgcolor="rgba(255,255,255,0.8)",
+        bordercolor="rgba(0,0,0,0.1)",
+        borderwidth=1,
+    )
+    
+    fig.update_layout(
+        **layout,
+        title=dict(text=title, font=dict(size=16, color=COLOR_PRIMARY, weight=700), x=0),
+        xaxis_title="Periode",
+        yaxis_title="Nilai",
+        height=500,
+        margin=dict(l=20, r=150, t=50, b=20), # Beri ruang di kanan untuk legend
+    )
+    return fig

@@ -23,7 +23,7 @@ def build_time_series(
     df = clean_df.copy()
 
     # Filter per kategori jika ada
-    if "kategori" in df.columns and category:
+    if "kategori" in df.columns and category and category != "Semua Kategori (Keseluruhan)":
         df = df[df["kategori"] == category]
 
     # Group by periode (sum jika ada duplikasi setelah filter)
@@ -53,7 +53,8 @@ def build_time_series(
 def get_available_categories(clean_df: pd.DataFrame) -> list[str]:
     """Ambil daftar kategori unik dari dataframe bersih."""
     if "kategori" in clean_df.columns:
-        return sorted(clean_df["kategori"].dropna().unique().tolist())
+        cats = sorted(clean_df["kategori"].dropna().unique().tolist())
+        return ["Semua Kategori (Keseluruhan)"] + cats
     return []
 
 

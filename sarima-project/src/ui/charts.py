@@ -127,15 +127,24 @@ def chart_forecast(
         hovertemplate="Forecast: %{y:,.0f}<extra></extra>",
     ))
 
-    # Garis pemisah aktual/forecast
+    # Garis pemisah aktual/forecast — konversi index ke string agar kompatibel Plotly + Pandas v3
     if len(actual) > 0:
-        fig.add_vline(
-            x=actual.index[-1],
-            line_dash="dot",
-            line_color="rgba(0,0,0,0.3)",
-            annotation_text="Batas Historis",
-            annotation_position="top right",
-        )
+        try:
+            last_x = actual.index[-1]
+            # Konversi Timestamp ke string ISO agar tidak crash di Plotly
+            if hasattr(last_x, "isoformat"):
+                last_x = last_x.isoformat()
+            else:
+                last_x = str(last_x)
+            fig.add_vline(
+                x=last_x,
+                line_dash="dot",
+                line_color="rgba(0,0,0,0.3)",
+                annotation_text="Batas Historis",
+                annotation_position="top right",
+            )
+        except Exception:
+            pass  # Abaikan jika tetap gagal
 
     fig.update_layout(
         **_LAYOUT_BASE,

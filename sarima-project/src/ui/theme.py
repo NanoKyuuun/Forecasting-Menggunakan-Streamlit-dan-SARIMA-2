@@ -35,10 +35,17 @@ def inject_global_css():
     }}
 
     /* ── Global Reset ── */
-    html, body, [class*="css"] {{
+    html, body {
         font-family: 'Inter', sans-serif !important;
+    }
+    /* Teks utama pada konten halaman — hanya area main content, bukan sidebar */
+    .main .block-container, .main .block-container * {
+        font-family: 'Inter', sans-serif !important;
+    }
+    /* Elemen teks umum di luar sidebar */
+    p, li, span:not([data-testid]), label:not([data-testid]) {
         color: var(--text);
-    }}
+    }
 
     /* ── Background ── */
     .stApp {{

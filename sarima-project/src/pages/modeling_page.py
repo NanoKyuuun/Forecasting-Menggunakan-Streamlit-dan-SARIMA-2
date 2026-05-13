@@ -113,6 +113,29 @@ def render():
             status_text.text("Auto-search selesai!")
             _display_result(result, ts, frequency)
 
+    # ── Navigasi Permanen (selalu tampil, baca dari session state) ────
+    # Jika model sudah ada di session state tampilkan di bawah halaman
+    st.markdown("<br/>", unsafe_allow_html=True)
+    model_ready = st.session_state.get(SS_MODEL_RESULT) is not None
+    col_nav1, col_nav2, _ = st.columns([2, 2, 2])
+    with col_nav1:
+        if st.button("← Analisis", use_container_width=True, key="btn_back_analisis"):
+            st.session_state["current_page"] = "Analisis Time Series"
+            st.rerun()
+    with col_nav2:
+        if st.button(
+            "📏  Lanjut ke Evaluasi Model",
+            type="primary",
+            use_container_width=True,
+            key="btn_next_evaluasi",
+            disabled=not model_ready,
+        ):
+            st.session_state["current_page"] = "Evaluasi Model"
+            st.rerun()
+    if not model_ready:
+        st.caption("⬆️ Jalankan model terlebih dahulu untuk melanjutkan.")
+
+
 
 def _display_result(result: dict, ts, frequency: str):
     """Tampilkan hasil fitting model."""
@@ -164,15 +187,3 @@ def _display_result(result: dict, ts, frequency: str):
             "namun hasil prediksi harus dipahami sebagai estimasi awal berbasis data terbatas."
         )
 
-    st.markdown("<br/>", unsafe_allow_html=True)
-
-    # ── Navigasi ──────────────────────────────────────────────
-    col_nav1, col_nav2, _ = st.columns([2, 2, 2])
-    with col_nav1:
-        if st.button("← Analisis", use_container_width=True):
-            st.session_state["current_page"] = "Analisis Time Series"
-            st.rerun()
-    with col_nav2:
-        if st.button("📏  Lanjut ke Evaluasi Model", type="primary", use_container_width=True):
-            st.session_state["current_page"] = "Evaluasi Model"
-            st.rerun()

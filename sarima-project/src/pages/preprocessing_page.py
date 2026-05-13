@@ -3,11 +3,12 @@
 # ============================================================
 
 import streamlit as st
+import plotly.graph_objects as go
 from src.core.preprocessing import preprocess
 from src.ui.cards import page_header, show_metrics_row
-from src.ui.messages import show_success, show_error, show_warning, show_section_title
+from src.ui.messages import show_success, show_error, show_warning, show_section_title, show_info
 from src.ui.tables import show_dataframe
-from src.utils.constants import SS_RAW_DATA, SS_COL_MAPPING, SS_CLEAN_DATA
+from src.utils.constants import SS_RAW_DATA, SS_COL_MAPPING, SS_CLEAN_DATA, COLOR_PRIMARY
 
 
 def render():
@@ -93,6 +94,67 @@ def render():
 
     st.markdown("<br/>", unsafe_allow_html=True)
 
+    # ── Visualisasi Data Bersih ───────────────────────────────
+    show_section_title("📊 Visualisasi Data Bersih")
+    show_info("Grafik berikut menampilkan distribusi dan tren data setelah proses pembersihan.")
+
+    col_hist, col_trend = st.columns(2)
+
+    nilai_col = "nilai"
+    if nilai_col in clean_df.columns:
+        with col_hist:
+            fig_hist = go.Figure()
+            fig_hist.add_trace(go.Histogram(
+                x=clean_df[nilai_col].dropna(),
+                nbinsx=20,
+                marker_color="#2196F3",
+                opacity=0.75,
+                hovertemplate="Range: %{x}<br>Count: %{y}<extra></extra>",
+                name="Distribusi Nilai",
+            ))
+            fig_hist.update_layout(
+                font=dict(family="Inter, sans-serif", size=12),
+                plot_bgcolor="white", paper_bgcolor="white",
+                margin=dict(l=20, r=20, t=40, b=20),
+                xaxis_title="Nilai", yaxis_title="Frekuensi",
+                title=dict(text="Histogram Distribusi Nilai", font=dict(size=14, color=COLOR_PRIMARY), x=0),
+                height=300, bargap=0.05,
+            )
+            st.plotly_chart(fig_hist, use_container_width=True)
+
+        with col_trend:
+            # Ambil kolom periode jika ada
+            periode_col = "periode"
+            if periode_col in clean_df.columns:
+                df_sorted = clean_df.sort_values(periode_col)
+                # Jika ada kolom kategori, ambil satu kategori saja
+                if "kategori" in df_sorted.columns:
+                    first_cat = df_sorted["kategori"].dropna().unique()
+                    if len(first_cat) > 0:
+                        df_sorted = df_sorted[df_sorted["kategori"] == first_cat[0]]
+                fig_trend = go.Figure()
+                fig_trend.add_trace(go.Scatter(
+                    x=list(df_sorted[periode_col]),
+                    y=df_sorted[nilai_col].values,
+                    mode="lines+markers",
+                    name="Tren Data Bersih",
+                    line=dict(color="#4CAF50", width=2),
+                    marker=dict(size=5),
+                    fill="tozeroy", fillcolor="rgba(76,175,80,0.07)",
+                    hovertemplate="%{x}<br>Nilai: %{y:,.0f}<extra></extra>",
+                ))
+                fig_trend.update_layout(
+                    font=dict(family="Inter, sans-serif", size=12),
+                    plot_bgcolor="white", paper_bgcolor="white",
+                    margin=dict(l=20, r=20, t=40, b=20),
+                    xaxis_title="Periode", yaxis_title="Nilai",
+                    title=dict(text="Tren Data Bersih", font=dict(size=14, color=COLOR_PRIMARY), x=0),
+                    height=300,
+                )
+                st.plotly_chart(fig_trend, use_container_width=True)
+
+    st.markdown("<br/>", unsafe_allow_html=True)
+
     # ── Navigasi ──────────────────────────────────────────────
     col1, col2, _ = st.columns([2, 2, 2])
     with col1:
@@ -103,3 +165,4 @@ def render():
         if st.button("🔄  Lanjut ke Transformasi", type="primary", use_container_width=True):
             st.session_state["current_page"] = "Transformasi Time Series"
             st.rerun()
+

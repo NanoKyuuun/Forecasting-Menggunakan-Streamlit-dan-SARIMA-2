@@ -116,6 +116,50 @@ def inject_global_css():
         max-width: 1200px !important;
     }}
 
+    /* ── Main Content Buttons (non-sidebar) ── */
+    /* Default / secondary button */
+    .main .stButton button,
+    .block-container .stButton button {{
+        background-color: #ffffff !important;
+        color: #1E3A5F !important;
+        border: 1.5px solid #cbd5e0 !important;
+        border-radius: 8px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.88rem !important;
+        font-weight: 500 !important;
+        padding: 0.45rem 1.2rem !important;
+        transition: all 0.18s ease !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+        color-scheme: light !important;
+    }}
+    .main .stButton button:hover,
+    .block-container .stButton button:hover {{
+        background-color: #f0f4f8 !important;
+        border-color: #a0aec0 !important;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.12) !important;
+        transform: translateY(-1px) !important;
+    }}
+    /* Primary button (type="primary") */
+    .main .stButton button[kind="primary"],
+    .block-container .stButton button[kind="primary"] {{
+        background-color: {COLOR_SECONDARY} !important;
+        color: #ffffff !important;
+        border: none !important;
+        box-shadow: 0 2px 8px rgba(0,102,204,0.35) !important;
+    }}
+    .main .stButton button[kind="primary"]:hover,
+    .block-container .stButton button[kind="primary"]:hover {{
+        background-color: #0055aa !important;
+        box-shadow: 0 4px 14px rgba(0,102,204,0.45) !important;
+    }}
+    /* Teks dalam button selalu inherit warna button */
+    .main .stButton button p,
+    .block-container .stButton button p {{
+        color: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+    }}
+
     /* ── Card ── */
     .sarima-card {{
         background: var(--card);

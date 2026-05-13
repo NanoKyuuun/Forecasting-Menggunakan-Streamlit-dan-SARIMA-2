@@ -413,5 +413,120 @@ def inject_global_css():
         max-width: 600px;
         line-height: 1.6;
     }}
+
+    /* ══════════════════════════════════════════════════════════
+       DARK MODE OVERRIDES
+       Semua override dikumpulkan di sini agar mudah dimaintain.
+       ══════════════════════════════════════════════════════════ */
+    @media (prefers-color-scheme: dark) {{
+
+        /* ── Root Variable Override ── */
+        :root {{
+            --bg:   #0e1117;
+            --card: #1e2530;
+            --text: #e8eaf0;
+            --muted:#9ca3af;
+        }}
+
+        /* ── App background ── */
+        .stApp {{
+            background-color: #0e1117 !important;
+        }}
+
+        /* ── Global text ── */
+        p, li, span:not([data-testid]), label:not([data-testid]) {{
+            color: #e8eaf0;
+        }}
+
+        /* ── Card ── */
+        .sarima-card {{
+            background: #1e2530 !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            color: #e8eaf0;
+        }}
+        .sarima-card p, .sarima-card div, .sarima-card td, .sarima-card li {{
+            color: #d1d5db !important;
+        }}
+        /* teks dengan warna spesifik yang jadi gelap di dark mode */
+        .sarima-card [style*="color:#1E3A5F"],
+        .sarima-card [style*="color: #1E3A5F"],
+        .sarima-card [style*="color:#4a5568"],
+        .sarima-card [style*="color: #4a5568"] {{
+            color: #e8eaf0 !important;
+        }}
+        .sarima-card [style*="color:#718096"],
+        .sarima-card [style*="color: #718096"] {{
+            color: #9ca3af !important;
+        }}
+
+        /* ── Metric Card ── */
+        .metric-card {{
+            background: #1e2530 !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+        }}
+        .metric-label {{ color: #9ca3af !important; }}
+        .metric-value {{ color: #60a5fa !important; }}
+        .metric-sub   {{ color: #9ca3af !important; }}
+
+        /* ── Section Title ── */
+        .section-title {{
+            color: #93c5fd !important;
+            border-bottom-color: rgba(96,165,250,0.25) !important;
+        }}
+
+        /* ── Alert Boxes ── */
+        .alert-success {{
+            background: rgba(46,204,113,0.12) !important;
+            color: #6ee7b7 !important;
+            border-left-color: #34d399 !important;
+        }}
+        .alert-warning {{
+            background: rgba(243,156,18,0.12) !important;
+            color: #fcd34d !important;
+            border-left-color: #f59e0b !important;
+        }}
+        .alert-danger {{
+            background: rgba(231,76,60,0.12) !important;
+            color: #fca5a5 !important;
+            border-left-color: #ef4444 !important;
+        }}
+        .alert-info {{
+            background: rgba(33,150,243,0.12) !important;
+            color: #93c5fd !important;
+            border-left-color: #3b82f6 !important;
+        }}
+
+        /* ── Badge ── */
+        .badge-success {{ background: rgba(46,204,113,0.2)  !important; color: #6ee7b7 !important; }}
+        .badge-warning {{ background: rgba(243,156,18,0.2)  !important; color: #fcd34d !important; }}
+        .badge-danger  {{ background: rgba(231,76,60,0.2)   !important; color: #fca5a5 !important; }}
+        .badge-info    {{ background: rgba(33,150,243,0.2)  !important; color: #93c5fd !important; }}
+
+        /* ── Tabel ── */
+        .dataframe td {{
+            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+            color: #d1d5db !important;
+        }}
+        .dataframe tr:hover td {{
+            background: rgba(255,255,255,0.04) !important;
+        }}
+
+        /* ── Step indicator ── */
+        .step-label {{ color: #9ca3af !important; }}
+        .step-icon  {{ background: rgba(96,165,250,0.15) !important; }}
+
+        /* ── Streamlit native widgets in dark ── */
+        .stSelectbox > div > div,
+        .stTextInput > div > div > input,
+        .stNumberInput > div > div > input {{
+            background: #2d3748 !important;
+            color: #e8eaf0 !important;
+            border-color: rgba(255,255,255,0.15) !important;
+        }}
+        /* st.info / st.warning / st.error native ── */
+        div[data-testid="stNotification"] {{
+            background: #1e2530 !important;
+        }}
+    }}
     </style>
     """, unsafe_allow_html=True)

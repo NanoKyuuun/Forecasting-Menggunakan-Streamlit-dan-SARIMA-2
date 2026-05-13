@@ -44,23 +44,15 @@ def render():
         selected_cat = None
 
     # ── Grafik Perbandingan Semua Kategori ─────────────────────
-    # Tampilkan sebelum pemilihan diproses supaya user bisa membaca tren
-    # sebelum menentukan prodi mana yang ingin dimodelkan.
-    col_mapping = st.session_state.get(SS_COL_MAPPING, {})
-    col_cat_raw = col_mapping.get("kategori")
-    col_per_raw = col_mapping.get("periode")
-    col_val_raw = col_mapping.get("nilai")
-
-    if col_cat_raw and col_per_raw and col_val_raw and col_cat_raw in clean_df.columns:
+    # clean_df SELALU punya kolom standar: periode / nilai / kategori
+    if "kategori" in clean_df.columns:
         show_section_title("📉 Tren Historis Seluruh Program Studi")
-        val_label = col_val_raw.replace('_', ' ').title()
-        cat_label_raw = col_cat_raw.replace('_', ' ').title()
         fig_multi = chart_multi_category_trend(
             clean_df,
-            col_period=col_per_raw,
-            col_value=col_val_raw,
-            col_category=col_cat_raw,
-            title=f"Tren {val_label} per {cat_label_raw}",
+            col_period="periode",
+            col_value="nilai",
+            col_category="kategori",
+            title="Tren Jumlah Pendaftar per Program Studi",
         )
         st.plotly_chart(fig_multi, use_container_width=True)
         st.markdown("<br/>", unsafe_allow_html=True)

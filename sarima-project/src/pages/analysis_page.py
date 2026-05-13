@@ -58,27 +58,19 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Perbandingan Seluruh Kategori ─────────────────────────
+    # clean_df SELALU punya kolom standar: periode / nilai / kategori
     clean_data = st.session_state.get(SS_CLEAN_DATA)
-    col_mapping = st.session_state.get(SS_COL_MAPPING, {})
-    col_cat = col_mapping.get("kategori")
-    
-    if clean_data is not None and col_cat is not None and col_cat in clean_data.columns:
-        show_section_title("🌐 Perbandingan Tren Antar Kategori")
-        # Agregasi data jika perlu (walaupun clean_data sudah unik per periode+kategori)
-        # Gunakan nama kolom asli untuk sumbu x dan y
-        col_per = col_mapping.get("periode")
-        col_val = col_mapping.get("nilai")
-        
-        if col_per and col_val:
-            fig_multi = chart_multi_category_trend(
-                clean_data, 
-                col_period=col_per, 
-                col_value=col_val, 
-                col_category=col_cat,
-                title=f"Tren {col_val.replace('_', ' ').title()} per {col_cat.replace('_', ' ').title()}"
-            )
-            st.plotly_chart(fig_multi, use_container_width=True)
-            st.markdown("<br/>", unsafe_allow_html=True)
+    if clean_data is not None and "kategori" in clean_data.columns:
+        show_section_title("🌐 Perbandingan Tren Antar Program Studi")
+        fig_multi = chart_multi_category_trend(
+            clean_data,
+            col_period="periode",
+            col_value="nilai",
+            col_category="kategori",
+            title="Tren Jumlah Pendaftar per Program Studi",
+        )
+        st.plotly_chart(fig_multi, use_container_width=True)
+        st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Grafik Tren + Rolling Mean (Spesifik Kategori) ────────
     show_section_title("📈 Grafik Tren Historis & Rolling Mean")

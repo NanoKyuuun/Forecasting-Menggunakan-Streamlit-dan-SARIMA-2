@@ -52,7 +52,8 @@ def preprocess(
     clean.dropna(subset=["nilai"], inplace=True)
 
     # 5. Konversi periode ke datetime
-    clean["periode"] = pd.to_datetime(clean["periode"], infer_datetime_format=True, errors="coerce")
+    # Gunakan astype(str) agar integer (misal: 2016) tidak dibaca sebagai epoch nanosecond
+    clean["periode"] = pd.to_datetime(clean["periode"].astype(str), errors="coerce")
     clean.dropna(subset=["periode"], inplace=True)
 
     # 6. Hapus duplikasi

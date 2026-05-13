@@ -6,10 +6,10 @@ import streamlit as st
 from src.core.transformation import build_time_series, get_available_categories
 from src.ui.cards import page_header, show_metrics_row
 from src.ui.messages import show_warning, show_success, show_error, show_section_title, show_methodological_note
-from src.ui.charts import chart_historical_trend
+from src.ui.charts import chart_historical_trend, chart_multi_category_trend
 from src.ui.tables import show_dataframe
 from src.utils.constants import (
-    SS_CLEAN_DATA, SS_TIME_SERIES, SS_SELECTED_CATEGORY, SS_DATA_FREQUENCY,
+    SS_CLEAN_DATA, SS_TIME_SERIES, SS_SELECTED_CATEGORY, SS_DATA_FREQUENCY, SS_COL_MAPPING,
 )
 import pandas as pd
 
@@ -33,7 +33,7 @@ def render():
     categories = get_available_categories(clean_df)
 
     if categories:
-        show_section_title("🏷️ Pilih Kategori")
+        show_section_title("🏷️ Pilih Kategori untuk Pemodelan")
         selected_cat = st.selectbox(
             "Pilih program studi / kategori yang akan dianalisis:",
             options=categories,
@@ -42,6 +42,28 @@ def render():
         )
     else:
         selected_cat = None
+
+    # ── Grafik Perbandingan Semua Kategori ─────────────────────
+    # Tampilkan sebelum pemilihan diproses supaya user bisa membaca tren
+    # sebelum menentukan prodi mana yang ingin dimodelkan.
+    col_mapping = st.session_state.get(SS_COL_MAPPING, {})
+    col_cat_raw = col_mapping.get("kategori")
+    col_per_raw = col_mapping.get("periode")
+    col_val_raw = col_mapping.get("nilai")
+
+    if col_cat_raw and col_per_raw and col_val_raw and col_cat_raw in clean_df.columns:
+        show_section_title("📉 Tren Historis Seluruh Program Studi")
+        val_label = col_val_raw.replace('_', ' ').title()
+        cat_label_raw = col_cat_raw.replace('_', ' ').title()
+        fig_multi = chart_multi_category_trend(
+            clean_df,
+            col_period=col_per_raw,
+            col_value=col_val_raw,
+            col_category=col_cat_raw,
+            title=f"Tren {val_label} per {cat_label_raw}",
+        )
+        st.plotly_chart(fig_multi, use_container_width=True)
+        st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Bangun Time Series ────────────────────────────────────
     try:

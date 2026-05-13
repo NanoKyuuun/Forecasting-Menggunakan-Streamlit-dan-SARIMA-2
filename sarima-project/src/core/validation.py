@@ -89,7 +89,7 @@ def validate_dataset(
 
     # ── 5. Cek Format Periode ────────────────────────────────
     if col_period in df.columns:
-        parsed = pd.to_datetime(df[col_period], errors="coerce", infer_datetime_format=True)
+        parsed = pd.to_datetime(df[col_period].astype(str), errors="coerce")
         n_invalid = parsed.isna().sum()
         if n_invalid == 0:
             checks.append({"check": "Format Periode", "status": "✅ OK", "detail": "Format periode dapat dibaca sebagai tanggal/tahun."})

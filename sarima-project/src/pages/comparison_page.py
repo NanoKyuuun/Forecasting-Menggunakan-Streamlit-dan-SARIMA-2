@@ -4,38 +4,41 @@
 
 import streamlit as st
 import pandas as pd
-from src.core.data_loader import load_file
 from src.core.preprocessing import preprocess
 from src.core.transformation import build_time_series
 from src.core.sarima_model import fit_sarima
 from src.core.evaluation import calculate_metrics
 from src.ui.cards import page_header, show_metrics_row
 from src.ui.messages import (
-    show_section_title, show_simulation_note, show_info,
-    show_methodological_note, show_warning,
+    show_section_title, show_info, show_warning,
 )
-from src.ui.charts import chart_comparison, chart_historical_trend
-from src.utils.constants import SAMPLE_BULANAN_10, SS_TIME_SERIES, SS_SELECTED_CATEGORY, SS_DATA_FREQUENCY
-from src.utils.helpers import format_number, format_percentage, get_data_quality_label, get_seasonal_period
+from src.ui.charts import chart_multi_category_trend, chart_historical_trend
+from src.utils.constants import (
+    SAMPLE_BULANAN_10,
+    SS_TIME_SERIES, SS_SELECTED_CATEGORY, SS_DATA_FREQUENCY, SS_CLEAN_DATA,
+)
+from src.utils.helpers import format_number, get_data_quality_label, get_seasonal_period
 
 
 @st.cache_data(show_spinner=False)
 def _load_reference_data():
-    """Load dataset ideal (bulanan) sebagai referensi perbandingan."""
+    """Load dataset ideal (bulanan 10 tahun) sebagai referensi perbandingan."""
     try:
         df = pd.read_csv(SAMPLE_BULANAN_10, encoding="utf-8")
         clean, _ = preprocess(df, "tanggal", "jumlah_pendaftar", "program_studi")
-        # Ambil satu kategori representatif (Akuntansi biasanya pertama)
-        cats = clean["kategori"].unique() if "kategori" in clean.columns else []
-        cat  = cats[0] if len(cats) > 0 else None
+        cats = clean["kategori"].unique().tolist() if "kategori" in clean.columns else []
+        # Bangun ts untuk satu kategori (untuk evaluasi model)
+        cat  = cats[0] if cats else None
         ts, freq, s = build_time_series(clean, cat)
         return {
-            "df":       clean,
-            "ts":       ts,
+            "df":       clean,          # <── full dataframe, semua prodi
+            "ts":       ts,             # <── satu kategori untuk evaluasi
             "freq":     freq,
             "s":        s,
             "category": cat,
-            "n_obs":    len(ts),
+            "n_cats":   len(cats),
+            "n_obs_per_cat": len(ts),   # observasi per kategori
+            "n_obs_total": len(clean),  # total baris
         }
     except Exception as e:
         return {"error": str(e)}
@@ -84,6 +87,9 @@ def render():
 
     with col_a:
         n_user = len(ts_user)
+        clean_user = st.session_state.get(SS_CLEAN_DATA)
+        n_cats_user = clean_user["kategori"].nunique() if (clean_user is not None and "kategori" in clean_user.columns) else 1
+        n_obs_total_user = len(clean_user) if clean_user is not None else n_user
         ql_u, ql_level_u = get_data_quality_label(n_user)
         color_u = {"success": "#4CAF50", "info": "#2196F3", "warning": "#FF9800", "danger": "#E74C3C"}.get(ql_level_u, "#2196F3")
         icon_u = "⚠️" if ql_level_u in ["warning", "danger"] else "✅"
@@ -95,14 +101,14 @@ def render():
                     {icon_u} Data Saat Ini (Diunggah)
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.88rem;">
-                    <div><strong>Kategori:</strong> {cat_user}</div>
-                    <div><strong>Observasi:</strong> {n_user}</div>
+                    <div><strong>Program Studi:</strong> {n_cats_user} prodi</div>
+                    <div><strong>Obs./Prodi:</strong> {n_user}</div>
                     <div><strong>Frekuensi:</strong> {freq_user}</div>
                     <div><strong>Kualitas:</strong> <span class="badge badge-{ql_level_u}">{ql_u}</span></div>
                 </div>
                 <div style="font-size:0.82rem;color:#718096;margin-top:0.8rem;">
-                    Data yang sedang kamu kerjakan saat ini. Jika observasi terbatas, 
-                    SARIMA mungkin kesulitan menangkap pola musiman dengan baik.
+                    Data yang sedang kamu kerjakan. Kategori dipilih: <strong>{cat_user}</strong>.
+                    Jika observasi per prodi terbatas, SARIMA mungkin kesulitan menangkap pola musiman.
                 </div>
             </div>
             """,
@@ -110,24 +116,25 @@ def render():
         )
 
     with col_b:
-        n_ref = ref.get("n_obs", 0)
-        ql_r, ql_level_r = get_data_quality_label(n_ref)
+        n_ref_per_cat = ref.get("n_obs_per_cat", ref.get("n_obs", 0))
+        n_ref_cats    = ref.get("n_cats", 1)
+        ql_r, ql_level_r = get_data_quality_label(n_ref_per_cat)
         color_r = {"success": "#4CAF50", "info": "#2196F3", "warning": "#FF9800", "danger": "#E74C3C"}.get(ql_level_r, "#4CAF50")
         st.markdown(
             f"""
             <div class="sarima-card" style="border-left:4px solid {color_r};">
                 <div style="font-weight:800;font-size:1.1rem;color:#1E3A5F;margin-bottom:0.7rem;">
-                    🌟 Data Ideal (Referensi)
+                    🌟 Data Ideal (Referensi 10 Tahun)
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.88rem;">
-                    <div><strong>Kategori:</strong> {ref.get('category', '—')}</div>
-                    <div><strong>Observasi:</strong> {n_ref}</div>
+                    <div><strong>Program Studi:</strong> {n_ref_cats} prodi</div>
+                    <div><strong>Obs./Prodi:</strong> {n_ref_per_cat}</div>
                     <div><strong>Frekuensi:</strong> {ref.get('freq', '—')}</div>
                     <div><strong>Kualitas:</strong> <span class="badge badge-{ql_level_r}">{ql_r}</span></div>
                 </div>
                 <div style="font-size:0.82rem;color:#718096;margin-top:0.8rem;">
-                    Dataset standar sistem (10 Tahun Bulanan). Memiliki cukup observasi 
-                    untuk membentuk pola tren dan musiman yang solid pada SARIMA.
+                    Dataset standar sistem (10 Tahun Bulanan). Memiliki 120 observasi per prodi —
+                    cukup untuk mendeteksi pola musiman yang solid pada SARIMA.
                 </div>
             </div>
             """,
@@ -139,31 +146,52 @@ def render():
     # ── Perbandingan Jumlah Observasi ─────────────────────────
     show_section_title("📊 Perbandingan Jumlah Observasi")
     show_metrics_row([
-        {"label": "Obs. Data Saat Ini",    "value": str(n_user), "color": color_u},
-        {"label": "Obs. Data Ideal",       "value": str(n_ref), "color": color_r},
-        {"label": "Selisih Observasi",     "value": str(n_ref - n_user), "color": "#2196F3"},
-        {"label": "Rasio Observasi",       "value": f"{n_ref / max(n_user, 1):.1f}x", "color": "#9C27B0"},
+        {"label": "Obs./Prodi (Saat Ini)",  "value": str(n_user),              "color": color_u},
+        {"label": "Obs./Prodi (Ideal)",     "value": str(n_ref_per_cat),       "color": color_r},
+        {"label": "Selisih Observasi",      "value": str(n_ref_per_cat - n_user), "color": "#2196F3"},
+        {"label": "Rasio Observasi",        "value": f"{n_ref_per_cat / max(n_user, 1):.1f}x", "color": "#9C27B0"},
     ])
 
     st.markdown("<br/>", unsafe_allow_html=True)
 
-    # ── Visualisasi Tren Masing-masing Data ───────────────────
-    show_section_title("📈 Visualisasi Tren Masing-masing Dataset")
+    # ── Visualisasi Tren: SEMUA PRODI per sisi ──────────────────
+    show_section_title("📈 Visualisasi Tren Seluruh Program Studi")
+    show_info("💡 Setiap garis mewakili satu Program Studi. Perhatikan perbedaan skala waktu dan kepadatan data antara kedua dataset.")
     col_c, col_d = st.columns(2)
 
     with col_c:
-        fig_u = chart_historical_trend(ts_user, title=f"Tren Saat Ini — {cat_user}", y_label="Nilai")
-        st.plotly_chart(fig_u, use_container_width=True)
+        st.markdown("**⏰ Data Diunggah (Semua Prodi)**")
+        clean_user = st.session_state.get(SS_CLEAN_DATA)
+        if clean_user is not None and "kategori" in clean_user.columns:
+            fig_u = chart_multi_category_trend(
+                clean_user, col_period="periode", col_value="nilai", col_category="kategori",
+                title=f"Tren Data Diunggah ({freq_user})",
+            )
+            st.plotly_chart(fig_u, use_container_width=True)
+        else:
+            fig_u = chart_historical_trend(ts_user, title=f"Tren — {cat_user}", y_label="Nilai")
+            st.plotly_chart(fig_u, use_container_width=True)
 
     with col_d:
-        ts_ref = ref.get("ts")
-        if ts_ref is not None and len(ts_ref) > 0:
-            fig_r = chart_historical_trend(ts_ref, title=f"Tren Referensi — {ref.get('category', '')}", y_label="Nilai")
+        st.markdown("**🌟 Data Referensi Ideal (Semua Prodi, 10 Tahun)**")
+        ref_df = ref.get("df")
+        if ref_df is not None and "kategori" in ref_df.columns:
+            fig_r = chart_multi_category_trend(
+                ref_df, col_period="periode", col_value="nilai", col_category="kategori",
+                title="Tren Data Referensi (Bulanan, 10 Tahun)",
+            )
             st.plotly_chart(fig_r, use_container_width=True)
         else:
-            st.warning(f"Data referensi tidak dapat dimuat: {ref.get('error', '')}")
+            ts_ref = ref.get("ts")
+            if ts_ref is not None:
+                fig_r = chart_historical_trend(ts_ref, title="Tren Referensi", y_label="Nilai")
+                st.plotly_chart(fig_r, use_container_width=True)
+            else:
+                st.warning(f"Data referensi tidak dapat dimuat: {ref.get('error', '')}")
 
-    st.markdown("<br/>", unsafe_allow_html=True)
+    # ts_ref untuk evaluasi model di bawah
+    ts_ref = ref.get("ts")
+
 
     # ── Perbandingan Evaluasi Model ───────────────────────────
     show_section_title("📏 Perbandingan Metrik Evaluasi Model")

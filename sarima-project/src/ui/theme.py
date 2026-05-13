@@ -114,7 +114,7 @@ def inject_global_css():
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
         max-width: 1200px !important;
-    }}}
+    }}
 
     /* ── Card ── */
     .sarima-card {{

@@ -54,7 +54,7 @@ def inject_global_css():
 
     /* ── Sidebar ── */
     section[data-testid="stSidebar"] {{
-        background: linear-gradient(160deg, {COLOR_PRIMARY} 0%, #16324f 100%) !important;
+        background: var(--primary) !important;
         border-right: none !important;
     }}
     section[data-testid="stSidebar"] * {{
@@ -111,10 +111,10 @@ def inject_global_css():
         visibility: hidden;
     }}
     .block-container {{
-        padding-top: 2rem !important;
-        padding-bottom: 3rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
         max-width: 1200px !important;
-    }}
+    }}}
 
     /* ── Card ── */
     .sarima-card {{
@@ -167,7 +167,7 @@ def inject_global_css():
 
     /* ── Page Header ── */
     .page-header {{
-        background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, #2a527a 100%);
+        background: var(--primary);
         color: #ffffff;
         padding: 2rem 2.5rem;
         border-radius: var(--radius);

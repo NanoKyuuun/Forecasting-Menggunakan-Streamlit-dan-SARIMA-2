@@ -79,13 +79,13 @@ AUTO_D_SEASONAL = range(0, 2)
 AUTO_Q_SEASONAL = range(0, 2)
 
 # ── Warna Tema ───────────────────────────────────────────────
-COLOR_PRIMARY    = "#1E3A5F"   # Biru tua — sidebar, header
-COLOR_SECONDARY  = "#2196F3"   # Biru muda — highlight, aksen
+COLOR_PRIMARY    = "#0D3B66"   # Biru tua — sidebar, header
+COLOR_SECONDARY  = "#0066CC"   # Biru muda — highlight, aksen
 COLOR_SUCCESS    = "#2ECC71"   # Hijau
 COLOR_WARNING    = "#F39C12"   # Oranye/kuning
 COLOR_DANGER     = "#E74C3C"   # Merah
-COLOR_BG         = "#F0F4F8"   # Background abu-abu muda
-COLOR_CARD       = "#FFFFFF"   # Card putih
+COLOR_BG         = "#F5F7FA"   # Background abu-abu muda
+COLOR_CARD       = "#FAFAFA"   # Card putih
 COLOR_TEXT_MAIN  = "#1A202C"   # Teks utama
 COLOR_TEXT_MUTED = "#718096"   # Teks sekunder
 

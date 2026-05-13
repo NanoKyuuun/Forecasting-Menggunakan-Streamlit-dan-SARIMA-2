@@ -1,0 +1,601 @@
+﻿tanggal,tahun,bulan,bulan_nama,program_studi,jumlah_pendaftar,frekuensi,kategori_data,catatan
+2016-01-01,2016,1,Januari,Teknik Informatika,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-02-01,2016,2,Februari,Teknik Informatika,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-03-01,2016,3,Maret,Teknik Informatika,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-04-01,2016,4,April,Teknik Informatika,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-05-01,2016,5,Mei,Teknik Informatika,37,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-06-01,2016,6,Juni,Teknik Informatika,59,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-07-01,2016,7,Juli,Teknik Informatika,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-08-01,2016,8,Agustus,Teknik Informatika,73,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-09-01,2016,9,September,Teknik Informatika,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-10-01,2016,10,Oktober,Teknik Informatika,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-11-01,2016,11,November,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-12-01,2016,12,Desember,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-01-01,2016,1,Januari,Sistem Informasi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-02-01,2016,2,Februari,Sistem Informasi,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-03-01,2016,3,Maret,Sistem Informasi,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-04-01,2016,4,April,Sistem Informasi,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-05-01,2016,5,Mei,Sistem Informasi,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-06-01,2016,6,Juni,Sistem Informasi,51,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-07-01,2016,7,Juli,Sistem Informasi,76,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-08-01,2016,8,Agustus,Sistem Informasi,64,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-09-01,2016,9,September,Sistem Informasi,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-10-01,2016,10,Oktober,Sistem Informasi,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-11-01,2016,11,November,Sistem Informasi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-12-01,2016,12,Desember,Sistem Informasi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-01-01,2016,1,Januari,Manajemen,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-02-01,2016,2,Februari,Manajemen,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-03-01,2016,3,Maret,Manajemen,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-04-01,2016,4,April,Manajemen,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-05-01,2016,5,Mei,Manajemen,48,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-06-01,2016,6,Juni,Manajemen,76,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-07-01,2016,7,Juli,Manajemen,114,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-08-01,2016,8,Agustus,Manajemen,95,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-09-01,2016,9,September,Manajemen,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-10-01,2016,10,Oktober,Manajemen,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-11-01,2016,11,November,Manajemen,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-12-01,2016,12,Desember,Manajemen,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-01-01,2016,1,Januari,Akuntansi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-02-01,2016,2,Februari,Akuntansi,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-03-01,2016,3,Maret,Akuntansi,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-04-01,2016,4,April,Akuntansi,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-05-01,2016,5,Mei,Akuntansi,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-06-01,2016,6,Juni,Akuntansi,52,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-07-01,2016,7,Juli,Akuntansi,78,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-08-01,2016,8,Agustus,Akuntansi,64,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-09-01,2016,9,September,Akuntansi,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-10-01,2016,10,Oktober,Akuntansi,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-11-01,2016,11,November,Akuntansi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-12-01,2016,12,Desember,Akuntansi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-01-01,2016,1,Januari,Teknik Industri,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-02-01,2016,2,Februari,Teknik Industri,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-03-01,2016,3,Maret,Teknik Industri,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-04-01,2016,4,April,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-05-01,2016,5,Mei,Teknik Industri,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-06-01,2016,6,Juni,Teknik Industri,44,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-07-01,2016,7,Juli,Teknik Industri,66,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-08-01,2016,8,Agustus,Teknik Industri,55,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-09-01,2016,9,September,Teknik Industri,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-10-01,2016,10,Oktober,Teknik Industri,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-11-01,2016,11,November,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2016-12-01,2016,12,Desember,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-01-01,2017,1,Januari,Teknik Informatika,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-02-01,2017,2,Februari,Teknik Informatika,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-03-01,2017,3,Maret,Teknik Informatika,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-04-01,2017,4,April,Teknik Informatika,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-05-01,2017,5,Mei,Teknik Informatika,42,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-06-01,2017,6,Juni,Teknik Informatika,68,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-07-01,2017,7,Juli,Teknik Informatika,93,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-08-01,2017,8,Agustus,Teknik Informatika,79,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-09-01,2017,9,September,Teknik Informatika,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-10-01,2017,10,Oktober,Teknik Informatika,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-11-01,2017,11,November,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-12-01,2017,12,Desember,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-01-01,2017,1,Januari,Sistem Informasi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-02-01,2017,2,Februari,Sistem Informasi,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-03-01,2017,3,Maret,Sistem Informasi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-04-01,2017,4,April,Sistem Informasi,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-05-01,2017,5,Mei,Sistem Informasi,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-06-01,2017,6,Juni,Sistem Informasi,57,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-07-01,2017,7,Juli,Sistem Informasi,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-08-01,2017,8,Agustus,Sistem Informasi,66,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-09-01,2017,9,September,Sistem Informasi,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-10-01,2017,10,Oktober,Sistem Informasi,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-11-01,2017,11,November,Sistem Informasi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-12-01,2017,12,Desember,Sistem Informasi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-01-01,2017,1,Januari,Manajemen,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-02-01,2017,2,Februari,Manajemen,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-03-01,2017,3,Maret,Manajemen,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-04-01,2017,4,April,Manajemen,30,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-05-01,2017,5,Mei,Manajemen,51,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-06-01,2017,6,Juni,Manajemen,82,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-07-01,2017,7,Juli,Manajemen,125,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-08-01,2017,8,Agustus,Manajemen,105,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-09-01,2017,9,September,Manajemen,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-10-01,2017,10,Oktober,Manajemen,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-11-01,2017,11,November,Manajemen,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-12-01,2017,12,Desember,Manajemen,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-01-01,2017,1,Januari,Akuntansi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-02-01,2017,2,Februari,Akuntansi,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-03-01,2017,3,Maret,Akuntansi,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-04-01,2017,4,April,Akuntansi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-05-01,2017,5,Mei,Akuntansi,34,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-06-01,2017,6,Juni,Akuntansi,54,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-07-01,2017,7,Juli,Akuntansi,84,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-08-01,2017,8,Agustus,Akuntansi,69,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-09-01,2017,9,September,Akuntansi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-10-01,2017,10,Oktober,Akuntansi,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-11-01,2017,11,November,Akuntansi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-12-01,2017,12,Desember,Akuntansi,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-01-01,2017,1,Januari,Teknik Industri,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-02-01,2017,2,Februari,Teknik Industri,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-03-01,2017,3,Maret,Teknik Industri,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-04-01,2017,4,April,Teknik Industri,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-05-01,2017,5,Mei,Teknik Industri,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-06-01,2017,6,Juni,Teknik Industri,47,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-07-01,2017,7,Juli,Teknik Industri,73,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-08-01,2017,8,Agustus,Teknik Industri,60,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-09-01,2017,9,September,Teknik Industri,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-10-01,2017,10,Oktober,Teknik Industri,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-11-01,2017,11,November,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2017-12-01,2017,12,Desember,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-01-01,2018,1,Januari,Teknik Informatika,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-02-01,2018,2,Februari,Teknik Informatika,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-03-01,2018,3,Maret,Teknik Informatika,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-04-01,2018,4,April,Teknik Informatika,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-05-01,2018,5,Mei,Teknik Informatika,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-06-01,2018,6,Juni,Teknik Informatika,74,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-07-01,2018,7,Juli,Teknik Informatika,105,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-08-01,2018,8,Agustus,Teknik Informatika,88,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-09-01,2018,9,September,Teknik Informatika,36,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-10-01,2018,10,Oktober,Teknik Informatika,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-11-01,2018,11,November,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-12-01,2018,12,Desember,Teknik Informatika,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-01-01,2018,1,Januari,Sistem Informasi,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-02-01,2018,2,Februari,Sistem Informasi,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-03-01,2018,3,Maret,Sistem Informasi,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-04-01,2018,4,April,Sistem Informasi,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-05-01,2018,5,Mei,Sistem Informasi,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-06-01,2018,6,Juni,Sistem Informasi,63,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-07-01,2018,7,Juli,Sistem Informasi,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-08-01,2018,8,Agustus,Sistem Informasi,74,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-09-01,2018,9,September,Sistem Informasi,30,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-10-01,2018,10,Oktober,Sistem Informasi,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-11-01,2018,11,November,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-12-01,2018,12,Desember,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-01-01,2018,1,Januari,Manajemen,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-02-01,2018,2,Februari,Manajemen,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-03-01,2018,3,Maret,Manajemen,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-04-01,2018,4,April,Manajemen,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-05-01,2018,5,Mei,Manajemen,55,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-06-01,2018,6,Juni,Manajemen,89,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-07-01,2018,7,Juli,Manajemen,136,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-08-01,2018,8,Agustus,Manajemen,106,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-09-01,2018,9,September,Manajemen,43,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-10-01,2018,10,Oktober,Manajemen,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-11-01,2018,11,November,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-12-01,2018,12,Desember,Manajemen,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-01-01,2018,1,Januari,Akuntansi,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-02-01,2018,2,Februari,Akuntansi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-03-01,2018,3,Maret,Akuntansi,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-04-01,2018,4,April,Akuntansi,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-05-01,2018,5,Mei,Akuntansi,36,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-06-01,2018,6,Juni,Akuntansi,58,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-07-01,2018,7,Juli,Akuntansi,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-08-01,2018,8,Agustus,Akuntansi,69,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-09-01,2018,9,September,Akuntansi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-10-01,2018,10,Oktober,Akuntansi,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-11-01,2018,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-12-01,2018,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-01-01,2018,1,Januari,Teknik Industri,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-02-01,2018,2,Februari,Teknik Industri,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-03-01,2018,3,Maret,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-04-01,2018,4,April,Teknik Industri,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-05-01,2018,5,Mei,Teknik Industri,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-06-01,2018,6,Juni,Teknik Industri,51,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-07-01,2018,7,Juli,Teknik Industri,79,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-08-01,2018,8,Agustus,Teknik Industri,66,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-09-01,2018,9,September,Teknik Industri,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-10-01,2018,10,Oktober,Teknik Industri,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-11-01,2018,11,November,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2018-12-01,2018,12,Desember,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-01-01,2019,1,Januari,Teknik Informatika,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-02-01,2019,2,Februari,Teknik Informatika,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-03-01,2019,3,Maret,Teknik Informatika,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-04-01,2019,4,April,Teknik Informatika,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-05-01,2019,5,Mei,Teknik Informatika,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-06-01,2019,6,Juni,Teknik Informatika,76,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-07-01,2019,7,Juli,Teknik Informatika,105,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-08-01,2019,8,Agustus,Teknik Informatika,92,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-09-01,2019,9,September,Teknik Informatika,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-10-01,2019,10,Oktober,Teknik Informatika,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-11-01,2019,11,November,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-12-01,2019,12,Desember,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-01-01,2019,1,Januari,Sistem Informasi,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-02-01,2019,2,Februari,Sistem Informasi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-03-01,2019,3,Maret,Sistem Informasi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-04-01,2019,4,April,Sistem Informasi,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-05-01,2019,5,Mei,Sistem Informasi,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-06-01,2019,6,Juni,Sistem Informasi,64,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-07-01,2019,7,Juli,Sistem Informasi,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-08-01,2019,8,Agustus,Sistem Informasi,77,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-09-01,2019,9,September,Sistem Informasi,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-10-01,2019,10,Oktober,Sistem Informasi,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-11-01,2019,11,November,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-12-01,2019,12,Desember,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-01-01,2019,1,Januari,Manajemen,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-02-01,2019,2,Februari,Manajemen,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-03-01,2019,3,Maret,Manajemen,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-04-01,2019,4,April,Manajemen,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-05-01,2019,5,Mei,Manajemen,56,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-06-01,2019,6,Juni,Manajemen,92,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-07-01,2019,7,Juli,Manajemen,130,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-08-01,2019,8,Agustus,Manajemen,112,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-09-01,2019,9,September,Manajemen,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-10-01,2019,10,Oktober,Manajemen,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-11-01,2019,11,November,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-12-01,2019,12,Desember,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-01-01,2019,1,Januari,Akuntansi,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-02-01,2019,2,Februari,Akuntansi,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-03-01,2019,3,Maret,Akuntansi,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-04-01,2019,4,April,Akuntansi,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-05-01,2019,5,Mei,Akuntansi,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-06-01,2019,6,Juni,Akuntansi,58,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-07-01,2019,7,Juli,Akuntansi,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-08-01,2019,8,Agustus,Akuntansi,71,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-09-01,2019,9,September,Akuntansi,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-10-01,2019,10,Oktober,Akuntansi,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-11-01,2019,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-12-01,2019,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-01-01,2019,1,Januari,Teknik Industri,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-02-01,2019,2,Februari,Teknik Industri,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-03-01,2019,3,Maret,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-04-01,2019,4,April,Teknik Industri,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-05-01,2019,5,Mei,Teknik Industri,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-06-01,2019,6,Juni,Teknik Industri,52,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-07-01,2019,7,Juli,Teknik Industri,82,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-08-01,2019,8,Agustus,Teknik Industri,63,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-09-01,2019,9,September,Teknik Industri,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-10-01,2019,10,Oktober,Teknik Industri,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-11-01,2019,11,November,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2019-12-01,2019,12,Desember,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-01-01,2020,1,Januari,Teknik Informatika,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-02-01,2020,2,Februari,Teknik Informatika,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-03-01,2020,3,Maret,Teknik Informatika,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-04-01,2020,4,April,Teknik Informatika,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-05-01,2020,5,Mei,Teknik Informatika,47,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-06-01,2020,6,Juni,Teknik Informatika,78,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-07-01,2020,7,Juli,Teknik Informatika,110,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-08-01,2020,8,Agustus,Teknik Informatika,96,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-09-01,2020,9,September,Teknik Informatika,37,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-10-01,2020,10,Oktober,Teknik Informatika,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-11-01,2020,11,November,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-12-01,2020,12,Desember,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-01-01,2020,1,Januari,Sistem Informasi,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-02-01,2020,2,Februari,Sistem Informasi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-03-01,2020,3,Maret,Sistem Informasi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-04-01,2020,4,April,Sistem Informasi,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-05-01,2020,5,Mei,Sistem Informasi,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-06-01,2020,6,Juni,Sistem Informasi,65,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-07-01,2020,7,Juli,Sistem Informasi,92,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-08-01,2020,8,Agustus,Sistem Informasi,80,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-09-01,2020,9,September,Sistem Informasi,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-10-01,2020,10,Oktober,Sistem Informasi,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-11-01,2020,11,November,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-12-01,2020,12,Desember,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-01-01,2020,1,Januari,Manajemen,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-02-01,2020,2,Februari,Manajemen,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-03-01,2020,3,Maret,Manajemen,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-04-01,2020,4,April,Manajemen,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-05-01,2020,5,Mei,Manajemen,56,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-06-01,2020,6,Juni,Manajemen,93,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-07-01,2020,7,Juli,Manajemen,134,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-08-01,2020,8,Agustus,Manajemen,115,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-09-01,2020,9,September,Manajemen,44,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-10-01,2020,10,Oktober,Manajemen,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-11-01,2020,11,November,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-12-01,2020,12,Desember,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-01-01,2020,1,Januari,Akuntansi,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-02-01,2020,2,Februari,Akuntansi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-03-01,2020,3,Maret,Akuntansi,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-04-01,2020,4,April,Akuntansi,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-05-01,2020,5,Mei,Akuntansi,36,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-06-01,2020,6,Juni,Akuntansi,60,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-07-01,2020,7,Juli,Akuntansi,86,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-08-01,2020,8,Agustus,Akuntansi,74,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-09-01,2020,9,September,Akuntansi,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-10-01,2020,10,Oktober,Akuntansi,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-11-01,2020,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-12-01,2020,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-01-01,2020,1,Januari,Teknik Industri,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-02-01,2020,2,Februari,Teknik Industri,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-03-01,2020,3,Maret,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-04-01,2020,4,April,Teknik Industri,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-05-01,2020,5,Mei,Teknik Industri,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-06-01,2020,6,Juni,Teknik Industri,53,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-07-01,2020,7,Juli,Teknik Industri,83,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-08-01,2020,8,Agustus,Teknik Industri,66,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-09-01,2020,9,September,Teknik Industri,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-10-01,2020,10,Oktober,Teknik Industri,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-11-01,2020,11,November,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2020-12-01,2020,12,Desember,Teknik Industri,3,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-01-01,2021,1,Januari,Teknik Informatika,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-02-01,2021,2,Februari,Teknik Informatika,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-03-01,2021,3,Maret,Teknik Informatika,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-04-01,2021,4,April,Teknik Informatika,32,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-05-01,2021,5,Mei,Teknik Informatika,52,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-06-01,2021,6,Juni,Teknik Informatika,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-07-01,2021,7,Juli,Teknik Informatika,125,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-08-01,2021,8,Agustus,Teknik Informatika,100,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-09-01,2021,9,September,Teknik Informatika,42,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-10-01,2021,10,Oktober,Teknik Informatika,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-11-01,2021,11,November,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-12-01,2021,12,Desember,Teknik Informatika,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-01-01,2021,1,Januari,Sistem Informasi,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-02-01,2021,2,Februari,Sistem Informasi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-03-01,2021,3,Maret,Sistem Informasi,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-04-01,2021,4,April,Sistem Informasi,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-05-01,2021,5,Mei,Sistem Informasi,42,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-06-01,2021,6,Juni,Sistem Informasi,70,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-07-01,2021,7,Juli,Sistem Informasi,103,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-08-01,2021,8,Agustus,Sistem Informasi,89,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-09-01,2021,9,September,Sistem Informasi,34,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-10-01,2021,10,Oktober,Sistem Informasi,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-11-01,2021,11,November,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-12-01,2021,12,Desember,Sistem Informasi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-01-01,2021,1,Januari,Manajemen,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-02-01,2021,2,Februari,Manajemen,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-03-01,2021,3,Maret,Manajemen,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-04-01,2021,4,April,Manajemen,37,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-05-01,2021,5,Mei,Manajemen,59,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-06-01,2021,6,Juni,Manajemen,99,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-07-01,2021,7,Juli,Manajemen,144,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-08-01,2021,8,Agustus,Manajemen,126,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-09-01,2021,9,September,Manajemen,48,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-10-01,2021,10,Oktober,Manajemen,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-11-01,2021,11,November,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-12-01,2021,12,Desember,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-01-01,2021,1,Januari,Akuntansi,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-02-01,2021,2,Februari,Akuntansi,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-03-01,2021,3,Maret,Akuntansi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-04-01,2021,4,April,Akuntansi,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-05-01,2021,5,Mei,Akuntansi,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-06-01,2021,6,Juni,Akuntansi,63,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-07-01,2021,7,Juli,Akuntansi,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-08-01,2021,8,Agustus,Akuntansi,80,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-09-01,2021,9,September,Akuntansi,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-10-01,2021,10,Oktober,Akuntansi,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-11-01,2021,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-12-01,2021,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-01-01,2021,1,Januari,Teknik Industri,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-02-01,2021,2,Februari,Teknik Industri,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-03-01,2021,3,Maret,Teknik Industri,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-04-01,2021,4,April,Teknik Industri,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-05-01,2021,5,Mei,Teknik Industri,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-06-01,2021,6,Juni,Teknik Industri,58,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-07-01,2021,7,Juli,Teknik Industri,83,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-08-01,2021,8,Agustus,Teknik Industri,73,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-09-01,2021,9,September,Teknik Industri,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-10-01,2021,10,Oktober,Teknik Industri,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-11-01,2021,11,November,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2021-12-01,2021,12,Desember,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-01-01,2022,1,Januari,Teknik Informatika,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-02-01,2022,2,Februari,Teknik Informatika,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-03-01,2022,3,Maret,Teknik Informatika,30,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-04-01,2022,4,April,Teknik Informatika,34,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-05-01,2022,5,Mei,Teknik Informatika,56,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-06-01,2022,6,Juni,Teknik Informatika,95,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-07-01,2022,7,Juli,Teknik Informatika,138,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-08-01,2022,8,Agustus,Teknik Informatika,111,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-09-01,2022,9,September,Teknik Informatika,47,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-10-01,2022,10,Oktober,Teknik Informatika,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-11-01,2022,11,November,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-12-01,2022,12,Desember,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-01-01,2022,1,Januari,Sistem Informasi,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-02-01,2022,2,Februari,Sistem Informasi,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-03-01,2022,3,Maret,Sistem Informasi,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-04-01,2022,4,April,Sistem Informasi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-05-01,2022,5,Mei,Sistem Informasi,45,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-06-01,2022,6,Juni,Sistem Informasi,77,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-07-01,2022,7,Juli,Sistem Informasi,112,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-08-01,2022,8,Agustus,Sistem Informasi,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-09-01,2022,9,September,Sistem Informasi,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-10-01,2022,10,Oktober,Sistem Informasi,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-11-01,2022,11,November,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-12-01,2022,12,Desember,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-01-01,2022,1,Januari,Manajemen,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-02-01,2022,2,Februari,Manajemen,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-03-01,2022,3,Maret,Manajemen,34,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-04-01,2022,4,April,Manajemen,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-05-01,2022,5,Mei,Manajemen,63,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-06-01,2022,6,Juni,Manajemen,108,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-07-01,2022,7,Juli,Manajemen,157,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-08-01,2022,8,Agustus,Manajemen,127,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-09-01,2022,9,September,Manajemen,54,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-10-01,2022,10,Oktober,Manajemen,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-11-01,2022,11,November,Manajemen,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-12-01,2022,12,Desember,Manajemen,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-01-01,2022,1,Januari,Akuntansi,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-02-01,2022,2,Februari,Akuntansi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-03-01,2022,3,Maret,Akuntansi,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-04-01,2022,4,April,Akuntansi,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-05-01,2022,5,Mei,Akuntansi,42,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-06-01,2022,6,Juni,Akuntansi,66,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-07-01,2022,7,Juli,Akuntansi,96,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-08-01,2022,8,Agustus,Akuntansi,85,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-09-01,2022,9,September,Akuntansi,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-10-01,2022,10,Oktober,Akuntansi,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-11-01,2022,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-12-01,2022,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-01-01,2022,1,Januari,Teknik Industri,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-02-01,2022,2,Februari,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-03-01,2022,3,Maret,Teknik Industri,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-04-01,2022,4,April,Teknik Industri,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-05-01,2022,5,Mei,Teknik Industri,40,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-06-01,2022,6,Juni,Teknik Industri,62,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-07-01,2022,7,Juli,Teknik Industri,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-08-01,2022,8,Agustus,Teknik Industri,80,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-09-01,2022,9,September,Teknik Industri,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-10-01,2022,10,Oktober,Teknik Industri,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-11-01,2022,11,November,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2022-12-01,2022,12,Desember,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-01-01,2023,1,Januari,Teknik Informatika,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-02-01,2023,2,Februari,Teknik Informatika,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-03-01,2023,3,Maret,Teknik Informatika,30,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-04-01,2023,4,April,Teknik Informatika,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-05-01,2023,5,Mei,Teknik Informatika,57,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-06-01,2023,6,Juni,Teknik Informatika,98,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-07-01,2023,7,Juli,Teknik Informatika,143,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-08-01,2023,8,Agustus,Teknik Informatika,117,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-09-01,2023,9,September,Teknik Informatika,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-10-01,2023,10,Oktober,Teknik Informatika,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-11-01,2023,11,November,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-12-01,2023,12,Desember,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-01-01,2023,1,Januari,Sistem Informasi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-02-01,2023,2,Februari,Sistem Informasi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-03-01,2023,3,Maret,Sistem Informasi,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-04-01,2023,4,April,Sistem Informasi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-05-01,2023,5,Mei,Sistem Informasi,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-06-01,2023,6,Juni,Sistem Informasi,79,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-07-01,2023,7,Juli,Sistem Informasi,115,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-08-01,2023,8,Agustus,Sistem Informasi,95,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-09-01,2023,9,September,Sistem Informasi,37,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-10-01,2023,10,Oktober,Sistem Informasi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-11-01,2023,11,November,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-12-01,2023,12,Desember,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-01-01,2023,1,Januari,Manajemen,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-02-01,2023,2,Februari,Manajemen,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-03-01,2023,3,Maret,Manajemen,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-04-01,2023,4,April,Manajemen,39,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-05-01,2023,5,Mei,Manajemen,69,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-06-01,2023,6,Juni,Manajemen,109,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-07-01,2023,7,Juli,Manajemen,158,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-08-01,2023,8,Agustus,Manajemen,131,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-09-01,2023,9,September,Manajemen,51,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-10-01,2023,10,Oktober,Manajemen,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-11-01,2023,11,November,Manajemen,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-12-01,2023,12,Desember,Manajemen,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-01-01,2023,1,Januari,Akuntansi,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-02-01,2023,2,Februari,Akuntansi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-03-01,2023,3,Maret,Akuntansi,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-04-01,2023,4,April,Akuntansi,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-05-01,2023,5,Mei,Akuntansi,43,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-06-01,2023,6,Juni,Akuntansi,68,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-07-01,2023,7,Juli,Akuntansi,99,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-08-01,2023,8,Agustus,Akuntansi,81,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-09-01,2023,9,September,Akuntansi,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-10-01,2023,10,Oktober,Akuntansi,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-11-01,2023,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-12-01,2023,12,Desember,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-01-01,2023,1,Januari,Teknik Industri,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-02-01,2023,2,Februari,Teknik Industri,16,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-03-01,2023,3,Maret,Teknik Industri,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-04-01,2023,4,April,Teknik Industri,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-05-01,2023,5,Mei,Teknik Industri,41,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-06-01,2023,6,Juni,Teknik Industri,64,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-07-01,2023,7,Juli,Teknik Industri,94,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-08-01,2023,8,Agustus,Teknik Industri,77,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-09-01,2023,9,September,Teknik Industri,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-10-01,2023,10,Oktober,Teknik Industri,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-11-01,2023,11,November,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2023-12-01,2023,12,Desember,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-01-01,2024,1,Januari,Teknik Informatika,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-02-01,2024,2,Februari,Teknik Informatika,25,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-03-01,2024,3,Maret,Teknik Informatika,31,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-04-01,2024,4,April,Teknik Informatika,36,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-05-01,2024,5,Mei,Teknik Informatika,60,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-06-01,2024,6,Juni,Teknik Informatika,104,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-07-01,2024,7,Juli,Teknik Informatika,154,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-08-01,2024,8,Agustus,Teknik Informatika,127,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-09-01,2024,9,September,Teknik Informatika,50,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-10-01,2024,10,Oktober,Teknik Informatika,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-11-01,2024,11,November,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-12-01,2024,12,Desember,Teknik Informatika,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-01-01,2024,1,Januari,Sistem Informasi,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-02-01,2024,2,Februari,Sistem Informasi,20,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-03-01,2024,3,Maret,Sistem Informasi,24,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-04-01,2024,4,April,Sistem Informasi,29,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-05-01,2024,5,Mei,Sistem Informasi,52,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-06-01,2024,6,Juni,Sistem Informasi,83,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-07-01,2024,7,Juli,Sistem Informasi,124,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-08-01,2024,8,Agustus,Sistem Informasi,102,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-09-01,2024,9,September,Sistem Informasi,40,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-10-01,2024,10,Oktober,Sistem Informasi,10,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-11-01,2024,11,November,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-12-01,2024,12,Desember,Sistem Informasi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-01-01,2024,1,Januari,Manajemen,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-02-01,2024,2,Februari,Manajemen,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-03-01,2024,3,Maret,Manajemen,34,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-04-01,2024,4,April,Manajemen,44,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-05-01,2024,5,Mei,Manajemen,72,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-06-01,2024,6,Juni,Manajemen,115,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-07-01,2024,7,Juli,Manajemen,169,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-08-01,2024,8,Agustus,Manajemen,140,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-09-01,2024,9,September,Manajemen,56,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-10-01,2024,10,Oktober,Manajemen,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-11-01,2024,11,November,Manajemen,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-12-01,2024,12,Desember,Manajemen,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-01-01,2024,1,Januari,Akuntansi,13,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-02-01,2024,2,Februari,Akuntansi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-03-01,2024,3,Maret,Akuntansi,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-04-01,2024,4,April,Akuntansi,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-05-01,2024,5,Mei,Akuntansi,45,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-06-01,2024,6,Juni,Akuntansi,71,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-07-01,2024,7,Juli,Akuntansi,105,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-08-01,2024,8,Agustus,Akuntansi,87,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-09-01,2024,9,September,Akuntansi,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-10-01,2024,10,Oktober,Akuntansi,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-11-01,2024,11,November,Akuntansi,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-12-01,2024,12,Desember,Akuntansi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-01-01,2024,1,Januari,Teknik Industri,12,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-02-01,2024,2,Februari,Teknik Industri,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-03-01,2024,3,Maret,Teknik Industri,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-04-01,2024,4,April,Teknik Industri,26,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-05-01,2024,5,Mei,Teknik Industri,43,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-06-01,2024,6,Juni,Teknik Industri,68,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-07-01,2024,7,Juli,Teknik Industri,99,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-08-01,2024,8,Agustus,Teknik Industri,83,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-09-01,2024,9,September,Teknik Industri,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-10-01,2024,10,Oktober,Teknik Industri,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-11-01,2024,11,November,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2024-12-01,2024,12,Desember,Teknik Industri,4,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-01-01,2025,1,Januari,Teknik Informatika,21,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-02-01,2025,2,Februari,Teknik Informatika,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-03-01,2025,3,Maret,Teknik Informatika,35,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-04-01,2025,4,April,Teknik Informatika,42,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-05-01,2025,5,Mei,Teknik Informatika,70,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-06-01,2025,6,Juni,Teknik Informatika,111,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-07-01,2025,7,Juli,Teknik Informatika,166,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-08-01,2025,8,Agustus,Teknik Informatika,139,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-09-01,2025,9,September,Teknik Informatika,56,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-10-01,2025,10,Oktober,Teknik Informatika,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-11-01,2025,11,November,Teknik Informatika,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-12-01,2025,12,Desember,Teknik Informatika,7,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-01-01,2025,1,Januari,Sistem Informasi,17,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-02-01,2025,2,Februari,Sistem Informasi,22,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-03-01,2025,3,Maret,Sistem Informasi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-04-01,2025,4,April,Sistem Informasi,33,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-05-01,2025,5,Mei,Sistem Informasi,55,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-06-01,2025,6,Juni,Sistem Informasi,89,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-07-01,2025,7,Juli,Sistem Informasi,132,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-08-01,2025,8,Agustus,Sistem Informasi,111,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-09-01,2025,9,September,Sistem Informasi,44,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-10-01,2025,10,Oktober,Sistem Informasi,11,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-11-01,2025,11,November,Sistem Informasi,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-12-01,2025,12,Desember,Sistem Informasi,6,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-01-01,2025,1,Januari,Manajemen,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-02-01,2025,2,Februari,Manajemen,30,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-03-01,2025,3,Maret,Manajemen,38,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-04-01,2025,4,April,Manajemen,45,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-05-01,2025,5,Mei,Manajemen,76,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-06-01,2025,6,Juni,Manajemen,121,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-07-01,2025,7,Juli,Manajemen,181,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-08-01,2025,8,Agustus,Manajemen,151,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-09-01,2025,9,September,Manajemen,61,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-10-01,2025,10,Oktober,Manajemen,15,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-11-01,2025,11,November,Manajemen,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-12-01,2025,12,Desember,Manajemen,8,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-01-01,2025,1,Januari,Akuntansi,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-02-01,2025,2,Februari,Akuntansi,19,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-03-01,2025,3,Maret,Akuntansi,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-04-01,2025,4,April,Akuntansi,28,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-05-01,2025,5,Mei,Akuntansi,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-06-01,2025,6,Juni,Akuntansi,74,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-07-01,2025,7,Juli,Akuntansi,112,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-08-01,2025,8,Agustus,Akuntansi,93,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-09-01,2025,9,September,Akuntansi,37,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-10-01,2025,10,Oktober,Akuntansi,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-11-01,2025,11,November,Akuntansi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-12-01,2025,12,Desember,Akuntansi,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-01-01,2025,1,Januari,Teknik Industri,14,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-02-01,2025,2,Februari,Teknik Industri,18,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-03-01,2025,3,Maret,Teknik Industri,23,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-04-01,2025,4,April,Teknik Industri,27,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-05-01,2025,5,Mei,Teknik Industri,46,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-06-01,2025,6,Juni,Teknik Industri,73,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-07-01,2025,7,Juli,Teknik Industri,108,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-08-01,2025,8,Agustus,Teknik Industri,91,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-09-01,2025,9,September,Teknik Industri,36,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-10-01,2025,10,Oktober,Teknik Industri,9,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-11-01,2025,11,November,Teknik Industri,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman
+2025-12-01,2025,12,Desember,Teknik Industri,5,Bulanan,Optimal kuat,Data simulasi terstruktur untuk uji model SARIMA dengan pola tren dan musiman

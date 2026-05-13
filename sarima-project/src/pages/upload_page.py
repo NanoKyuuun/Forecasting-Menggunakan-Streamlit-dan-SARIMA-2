@@ -85,7 +85,29 @@ def render():
 
         col_a, col_b, col_c = st.columns(3)
         with col_a:
-            default_period = guess_col(["tahun", "tanggal", "periode", "date", "bulan", "month", "year"])
+            # Prioritaskan kolom bertipe datetime/tanggal dulu, baru fallback ke integer tahun
+            def guess_period_col(cols: list[str]) -> str:
+                # Cek tipe data dulu — preferensikan kolom yang sudah datetime atau string tanggal
+                date_keywords = ["tanggal", "date", "periode", "bulan", "month"]
+                year_keywords = ["tahun", "year"]
+                for kw in date_keywords:
+                    for c in cols:
+                        if kw.lower() in c.lower():
+                            return c
+                # Coba cek apakah isinya bisa jadi tanggal nyata
+                for kw in year_keywords:
+                    for c in cols:
+                        if kw.lower() in c.lower():
+                            try:
+                                sample = df[c].dropna().head(3)
+                                parsed = pd.to_datetime(sample, errors='coerce')
+                                # Jika parsed jadi 1970 → ini integer, skip
+                                if not all(parsed.dt.year < 1980):
+                                    return c
+                            except Exception:
+                                pass
+                return cols[0] if cols else none_opt[0]
+            default_period = guess_period_col(all_cols)
             sel_period = st.selectbox(
                 "📅 Kolom Periode *",
                 options=all_cols,
@@ -103,7 +125,7 @@ def render():
             )
 
         with col_c:
-            default_cat = guess_col(["prodi", "kategori", "kategory", "program", "group", "kelompok"])
+            default_cat = guess_col(["prodi", "program_studi", "kategori", "kategory", "program", "group", "kelompok", "nama"])
             sel_category = st.selectbox(
                 "🏷️ Kolom Kategori (opsional)",
                 options=none_opt + all_cols,

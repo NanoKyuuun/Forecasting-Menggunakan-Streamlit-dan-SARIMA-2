@@ -60,6 +60,40 @@ def inject_global_css():
     section[data-testid="stSidebar"] * {{
         color: #ffffff !important;
     }}
+
+    /* ── Override Tombol Navigasi Sidebar ── */
+    section[data-testid="stSidebar"] .stButton button {{
+        background: transparent !important;
+        border: none !important;
+        border-left: 3px solid transparent !important;
+        border-radius: 8px !important;
+        color: rgba(255,255,255,0.85) !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.88rem !important;
+        font-weight: 400 !important;
+        text-align: left !important;
+        padding: 0.5rem 0.8rem !important;
+        transition: all 0.15s ease !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        box-shadow: none !important;
+    }}
+    section[data-testid="stSidebar"] .stButton button:hover {{
+        background: rgba(255,255,255,0.12) !important;
+        color: #ffffff !important;
+        border-left-color: rgba(33,150,243,0.6) !important;
+    }}
+    section[data-testid="stSidebar"] .stButton button:focus {{
+        box-shadow: none !important;
+        outline: none !important;
+    }}
+    section[data-testid="stSidebar"] .stButton button p {{
+        color: inherit !important;
+        font-size: inherit !important;
+    }}
+
     section[data-testid="stSidebar"] .stRadio label {{
         color: rgba(255,255,255,0.85) !important;
         font-size: 0.9rem !important;

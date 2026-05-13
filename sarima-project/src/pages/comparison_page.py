@@ -21,7 +21,7 @@ from src.utils.helpers import format_number, format_percentage, get_data_quality
 
 @st.cache_data(show_spinner=False)
 def _load_sample_data():
-    """Load dan proses kedua dataset sampel secara cached."""
+    """Load dan proses kedua dataset sampel secara cached (cache busted)."""
     results = {}
 
     for key, path, col_p, col_v, col_c in [

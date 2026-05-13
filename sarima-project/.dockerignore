@@ -1,0 +1,52 @@
+# ============================================================
+# .dockerignore — File yang TIDAK ikut masuk ke Docker image
+# ============================================================
+
+# Virtual environment (besar, tidak diperlukan di container)
+venv/
+.venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Git
+.git/
+.gitignore
+
+# Windows batch scripts (tidak diperlukan di Linux container)
+*.bat
+
+# IDE & Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test files
+e2e_test.py
+tests/
+*.test.py
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Outputs (di-mount sebagai volume, tidak perlu di-bake ke image)
+outputs/
+
+# Dokumentasi (opsional, bisa dihapus jika ingin include)
+*.md

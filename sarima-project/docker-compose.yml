@@ -1,0 +1,54 @@
+# ============================================================
+# docker-compose.yml — Dashboard Forecasting SARIMA
+# ============================================================
+# Untuk development/staging: jalankan dengan `docker compose up`
+# Untuk production: gunakan `docker compose -f docker-compose.yml up -d`
+
+services:
+  sarima-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sarima-forecasting-dashboard:latest
+    container_name: sarima-dashboard
+    restart: unless-stopped
+
+    ports:
+      # Format: "HOST_PORT:CONTAINER_PORT"
+      # Akses di browser: http://localhost:8501
+      - "8501:8501"
+
+    volumes:
+      # Mount folder data agar file CSV yang diupload tetap ada
+      # walau container di-restart
+      - ./data:/app/data
+      # Mount folder output untuk hasil export
+      - ./outputs:/app/outputs
+
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      - STREAMLIT_THEME_BASE=light
+
+    # Resource limits (sesuaikan dengan spec server)
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "1.0"
+        reservations:
+          memory: 512M
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

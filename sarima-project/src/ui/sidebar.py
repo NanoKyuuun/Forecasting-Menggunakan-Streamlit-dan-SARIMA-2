@@ -96,33 +96,64 @@ def _inject_sidebar_toggle_js():
         btn.onmouseenter = () => { btn.style.width = '2.5rem'; btn.style.background = '#0066CC'; };
         btn.onmouseleave = () => { btn.style.width = '2rem';   btn.style.background = '#0D3B66'; };
 
-        // ── Klik: cari & klik tombol native Streamlit ────────────────────
+        // ── Klik: simulasi full pointer sequence untuk React ─────────────
         btn.addEventListener('click', function() {
+
+            // Helper: simulasikan klik yang React bisa kenali
+            function reactClick(el) {
+                ['pointerover','pointerenter','mouseover','mouseenter',
+                 'pointermove','mousemove',
+                 'pointerdown','mousedown',
+                 'pointerup','mouseup','click'
+                ].forEach(function(type) {
+                    el.dispatchEvent(new MouseEvent(type, {
+                        bubbles: true,
+                        cancelable: true,
+                        view: parent,
+                        composed: true,
+                    }));
+                });
+            }
+
+            // Coba semua selector tombol native Streamlit
             const targets = [
                 '[data-testid="stSidebarCollapsedControl"] button',
                 '[data-testid="collapsedControl"] button',
                 'button[aria-label="Open sidebar"]',
                 'button[aria-label="open sidebar"]',
+                'button[aria-label="Toggle sidebar visibility"]',
                 '.st-emotion-cache-1dp5vir button',
             ];
+            let clicked = false;
             for (const sel of targets) {
                 const el = doc.querySelector(sel);
-                if (el) { el.click(); return; }
+                if (el) {
+                    reactClick(el);
+                    clicked = true;
+                    break;
+                }
             }
-            // Fallback: dispatch keyboard event (Streamlit shortcut)
-            doc.dispatchEvent(new KeyboardEvent('keydown', { key: 'b', metaKey: true, bubbles: true }));
+
+            // Fallback: paksa CSS sidebar agar terlihat langsung
+            if (!clicked) {
+                const sidebar = doc.querySelector('[data-testid="stSidebar"]');
+                if (sidebar) {
+                    sidebar.style.setProperty('transform', 'none', 'important');
+                    sidebar.style.setProperty('min-width', '21rem', 'important');
+                    sidebar.style.setProperty('margin-left', '0', 'important');
+                    sidebar.style.setProperty('visibility', 'visible', 'important');
+                }
+            }
         });
 
         // ── Deteksi sidebar collapsed / expanded ─────────────────────────
         function checkState() {
             const sidebar = doc.querySelector('[data-testid="stSidebar"]');
             if (!sidebar) return;
-            // Sidebar dianggap collapsed jika lebar < 50px
             const collapsed = sidebar.getBoundingClientRect().width < 50;
             btn.style.display = collapsed ? 'flex' : 'none';
         }
 
-        // Poll setiap 400ms (cukup cepat, tidak boros CPU)
         checkState();
         setInterval(checkState, 400);
     })();

@@ -18,16 +18,26 @@ from src.utils.helpers import format_number, get_data_quality_label
 
 
 def render():
+    """
+    M-render isi halaman 'Analisis Time Series'.
+    Halaman ini bertugas untuk memberikan pemahaman awal tentang data historis
+    kepada pengguna (Eksplorasi Data / EDA) sebelum masuk ke pemodelan statistik yang lebih rumit.
+    Menampilkan statistik dasar, grafik tren, boxplot, dan ACF.
+    """
+    
+    # 1. Header Halaman
     page_header(
         "Analisis Time Series",
         "Eksplorasi pola historis: statistik deskriptif, tren, dan visualisasi perubahan antar periode.",
         "📊",
     )
 
+    # 2. Ambil data dari session_state
     ts          = st.session_state.get(SS_TIME_SERIES)
     category    = st.session_state.get(SS_SELECTED_CATEGORY, "")
     frequency   = st.session_state.get(SS_DATA_FREQUENCY, "—")
 
+    # Jika user memaksa masuk ke halaman ini tapi belum ada data, cegah dan arahkan kembali
     if ts is None:
         show_warning("Time series belum tersedia. Kembali ke Transformasi.")
         if st.button("← Transformasi"):
@@ -35,12 +45,16 @@ def render():
             st.rerun()
         return
 
+    # Hitung nilai-nilai statistik dasar
     stats = get_descriptive_stats(ts)
+    
+    # Tentukan kelayakan data (Cukup/Kurang/Sangat Terbatas) berdasarkan jumlah baris
     quality_label, quality_level = get_data_quality_label(stats["n_obs"])
     color_map = {"success": "#4CAF50", "info": "#2196F3", "warning": "#FF9800", "danger": "#E74C3C"}
 
     # ── Statistik Deskriptif ───────────────────────────────────
     show_section_title("📐 Statistik Deskriptif")
+    # Tampilkan deretan kotak berisi ringkasan angka
     show_metrics_row([
         {"label": "Total Observasi", "value": str(stats["n_obs"]),             "color": color_map.get(quality_level, "#2196F3")},
         {"label": "Nilai Minimum",   "value": format_number(stats["min"], 0),  "color": "#E74C3C"},
@@ -58,6 +72,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Perbandingan Seluruh Kategori ─────────────────────────
+    # Menampilkan tren dari semua kategori sekaligus agar user bisa melihat perbandingannya.
     # clean_df SELALU punya kolom standar: periode / nilai / kategori
     clean_data = st.session_state.get(SS_CLEAN_DATA)
     if clean_data is not None and "kategori" in clean_data.columns:
@@ -76,10 +91,14 @@ def render():
     show_section_title("📈 Grafik Tren Historis & Rolling Mean")
     cat_label = f" — {category}" if category else ""
 
+    # Menghitung nilai 'Rolling Mean' untuk menghaluskan grafik agar tren kasar lebih terlihat
+    # Besar window dinamis, minimal 3, maksimal 1/6 dari panjang data.
     window = max(3, len(ts) // 6)
     rolling_mean = ts.rolling(window=window, min_periods=1).mean()
 
+    # Gambar grafik garis (Plotly)
     fig_trend = go.Figure()
+    # Garis data asli
     fig_trend.add_trace(go.Scatter(
         x=list(ts.index), y=ts.values,
         mode="lines+markers", name="Aktual",
@@ -87,11 +106,13 @@ def render():
         marker=dict(size=5),
         fill="tozeroy", fillcolor="rgba(33,150,243,0.07)",
     ))
+    # Garis data yang sudah dihaluskan (moving average)
     fig_trend.add_trace(go.Scatter(
         x=list(rolling_mean.index), y=rolling_mean.values,
         mode="lines", name=f"Rolling Mean (window={window})",
         line=dict(color="#FF6B35", width=2.5, dash="dash"),
     ))
+    # Kustomisasi UI grafik
     fig_trend.update_layout(
         font=dict(family="Inter, sans-serif", size=12),
         plot_bgcolor="white", paper_bgcolor="white",
@@ -106,11 +127,14 @@ def render():
     st.plotly_chart(fig_trend, use_container_width=True)
 
     # ── Grafik Perubahan Antar Periode ────────────────────────
+    # Menampilkan apakah data mengalami kenaikan (hijau) atau penurunan (merah) 
+    # dibandingkan periode tepat sebelumnya (ts.diff).
     show_section_title("📉 Perubahan Antar Periode")
     if len(ts) > 1:
         fig_change = chart_bar_changes(ts, title=f"Perubahan Per Periode{cat_label}")
         st.plotly_chart(fig_change, use_container_width=True)
 
+        # Cari titik perubahan paling ekstrem (naik drastis & turun drastis)
         changes = ts.diff().dropna()
         col_a, col_b = st.columns(2)
         with col_a:
@@ -141,6 +165,7 @@ def render():
             )
 
     # ── Distribusi Nilai (Boxplot) ────────────────────────────
+    # Memberikan gambaran sebaran titik-titik data (melihat jika ada pencilan/outlier)
     show_section_title("📦 Distribusi Nilai")
     col_box, col_stats = st.columns([1, 1])
     with col_box:
@@ -160,6 +185,7 @@ def render():
         st.plotly_chart(fig_box, use_container_width=True)
 
     with col_stats:
+        # Hitung Kuartil 1, Kuartil 3, Median, Interquartile Range, dll.
         q1  = float(np.percentile(ts.values, 25))
         q3  = float(np.percentile(ts.values, 75))
         med = float(np.median(ts.values))
@@ -186,29 +212,40 @@ def render():
         )
 
     # ── ACF Sederhana (manual via Plotly) ────────────────────
+    # Menampilkan plot Autocorrelation Function.
+    # Digunakan dosen penguji / akademisi untuk melihat apakah data stasioner / punya pola MA(q).
     show_section_title("📊 Autokorelasi (ACF)")
     show_info("ACF menunjukkan korelasi data dengan lag sebelumnya. Nilai signifikan (di luar batas biru) mengindikasikan pola yang dapat dimodelkan.")
+    
     if len(ts) >= 8:
+        # Maksimum lags adalah 20, tapi kalau datanya sedikit, diturunkan (len // 2)
         max_lags = min(20, len(ts) // 2 - 1)
         lags = list(range(1, max_lags + 1))
         acf_values = []
         ts_mean = ts.mean()
         ts_var  = float(np.var(ts.values))
+        
+        # Perhitungan rumus kovarians ACF secara manual karena tidak import library eksternal khusus ACF
         for lag in lags:
             cov = float(np.mean((ts.values[lag:] - ts_mean) * (ts.values[:-lag] - ts_mean)))
             acf_values.append(cov / ts_var if ts_var != 0 else 0)
 
+        # Hitung batas Confidence Interval (CI) pendekatan sederhana: 1.96 / sqrt(N)
         ci = 1.96 / np.sqrt(len(ts))
         fig_acf = go.Figure()
+        
         for i, (lag, acf_val) in enumerate(zip(lags, acf_values)):
-            color = "#2196F3" if abs(acf_val) > ci else "rgba(33,150,243,0.35)"
+            color = "#2196F3" if abs(acf_val) > ci else "rgba(33,150,243,0.35)" # Warnai tebal jika di luar CI
             fig_acf.add_trace(go.Bar(
                 x=[lag], y=[acf_val], marker_color=color,
                 showlegend=False, hovertemplate=f"Lag {lag}: %{{y:.3f}}<extra></extra>",
             ))
+            
+        # Gambar garis putus-putus merah untuk batas toleransi signifikansi (CI)
         fig_acf.add_hline(y=ci,  line_dash="dash", line_color="rgba(255,0,0,0.5)", line_width=1.5)
         fig_acf.add_hline(y=-ci, line_dash="dash", line_color="rgba(255,0,0,0.5)", line_width=1.5)
         fig_acf.add_hline(y=0,   line_dash="solid", line_color="rgba(0,0,0,0.3)", line_width=1)
+        
         fig_acf.update_layout(
             font=dict(family="Inter, sans-serif", size=12),
             plot_bgcolor="white", paper_bgcolor="white",
@@ -224,12 +261,16 @@ def render():
     # ── Indikasi Pola ─────────────────────────────────────────
     show_section_title("🔍 Indikasi Pola Data")
     ts_values = ts.values
+    # Deteksi tren linear kasar berdasarkan nilai awal dan akhir
     trend_indicator = "Meningkat 📈" if ts_values[-1] > ts_values[0] else ("Menurun 📉" if ts_values[-1] < ts_values[0] else "Stagnan ➡️")
+    
+    # Beri catatan soal musiman bergantung pada tipe frekuensinya
     seasonal_note = (
         "✅ Data bulanan — berpotensi memiliki pola musiman yang dapat dideteksi SARIMA."
         if frequency == "Bulanan"
         else f"⚠️ Data {frequency} — jumlah observasi mungkin tidak cukup untuk mendeteksi pola musiman yang kuat."
     )
+    
     st.markdown(
         f"""
         <div class="sarima-card">

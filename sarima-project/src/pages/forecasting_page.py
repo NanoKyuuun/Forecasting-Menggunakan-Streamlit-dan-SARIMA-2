@@ -21,17 +21,25 @@ from src.utils.helpers import format_number, get_seasonal_period
 
 
 def render():
+    """
+    M-render isi halaman 'Forecasting'.
+    Di halaman ini, pengguna dapat menentukan berapa bulan/tahun ke depan
+    yang ingin diprediksi. Hasil prediksi akan digabungkan dengan batas
+    keyakinan (Confidence Interval) dan disajikan dalam bentuk tabel serta grafik yang indah.
+    """
     page_header(
         "Forecasting",
         "Prediksi nilai untuk periode mendatang berdasarkan model SARIMA yang telah dilatih.",
         "🔮",
     )
 
+    # Memanggil model yang sudah di-training di halaman Pemodelan
     ts            = st.session_state.get(SS_TIME_SERIES)
     model_result  = st.session_state.get(SS_MODEL_RESULT)
     sarima_params = st.session_state.get(SS_SARIMA_PARAMS)
     category      = st.session_state.get(SS_SELECTED_CATEGORY, "Data")
 
+    # Keamanan UI: Cegah pengguna nakal yang langsung mengakses halaman tanpa bikin model
     if ts is None or model_result is None:
         show_warning("Model SARIMA belum tersedia. Kembali ke Pemodelan.")
         if st.button("← Pemodelan SARIMA"):
@@ -40,6 +48,7 @@ def render():
         return
 
     # ── Konfigurasi Forecast ──────────────────────────────────
+    # UI interaktif berupa slider untuk memilih berapa panjang rentang prediksi
     show_section_title("⚙️ Konfigurasi Forecast")
     col_param, col_info = st.columns([2, 3])
 
@@ -47,19 +56,23 @@ def render():
         n_periods = st.slider(
             "Jumlah Periode Forecast",
             min_value=1,
-            max_value=24,
+            max_value=24,   # Batasi maksimal 24 periode agar prediksi tidak terlalu ngawur di ujung
             value=6,
             help="Pilih berapa periode ke depan yang ingin diprediksi.",
         )
 
     with col_info:
+        # Menampilkan kembali kotak berisi parameter model yang dipakai
         if sarima_params:
             sarima_params_card(sarima_params)
 
+    # Tombol besar berwarna biru (primary)
     run_btn = st.button("🚀 Generate Forecast", type="primary", use_container_width=False)
 
+    # Eksekusi hanya jika tombol ditekan, ATAU jika user sudah pernah menekan tombol sebelumnya
+    # (agar tabel tidak hilang waktu user scroll halaman)
     if run_btn or st.session_state.get(SS_FORECAST_RESULT) is not None:
-        # Generate jika belum ada atau tombol ditekan
+        # Generate jika belum ada atau tombol ditekan ulang (karena mengubah slider)
         if run_btn:
             with st.spinner("Menghasilkan prediksi..."):
                 forecast_result = generate_forecast(model_result, n_periods)
@@ -73,15 +86,18 @@ def render():
 
         show_success(f"Forecast berhasil dihasilkan untuk {n_periods} periode ke depan!")
 
+        # Bongkar isi kamus (dictionary) hasil forecast
         forecast_df   = forecast_result["forecast_df"]
-        forecast_mean = forecast_result["forecast_mean"]
-        forecast_lower = forecast_result["forecast_lower"]
-        forecast_upper = forecast_result["forecast_upper"]
+        forecast_mean = forecast_result["forecast_mean"]    # Nilai tebakan tengah
+        forecast_lower = forecast_result["forecast_lower"]  # Batas aman terendah
+        forecast_upper = forecast_result["forecast_upper"]  # Batas aman tertinggi
 
         # ── Ringkasan Forecast ────────────────────────────────
         show_section_title("📊 Ringkasan Forecast")
         first_val = float(forecast_mean.iloc[0]) if len(forecast_mean) > 0 else 0
         last_val  = float(forecast_mean.iloc[-1]) if len(forecast_mean) > 0 else 0
+        
+        # Tampilkan kotak metrik berisi nilai periode pertama dan terakhir
         show_metrics_row([
             {"label": "Periode Forecast", "value": str(n_periods),              "color": "#2196F3"},
             {"label": "Nilai Awal",       "value": format_number(first_val, 0), "color": "#4CAF50"},
@@ -92,6 +108,7 @@ def render():
         st.markdown("<br/>", unsafe_allow_html=True)
 
         # ── Grafik Forecast ───────────────────────────────────
+        # Grafik krusial: Memperlihatkan gabungan data historis (biru) dan garis prediksi (hijau) ke depan
         show_section_title("📈 Grafik Aktual + Forecast")
         fig = chart_forecast(
             actual=ts,
@@ -104,12 +121,15 @@ def render():
         st.plotly_chart(fig, use_container_width=True)
 
         # ── Tabel Forecast ────────────────────────────────────
+        # Tabel transparan hasil modifikasi HTML (via tables.py)
         show_section_title("📋 Tabel Hasil Forecast")
         display_df = forecast_df.copy()
+        # Meng-indonesiakan judul kolom sebelum dicetak ke layar
         display_df.columns = ["Periode", "Prediksi", "Batas Bawah", "Batas Atas"]
         show_forecast_table(display_df)
 
         # ── Download CSV ──────────────────────────────────────
+        # Memberikan fasilitas unduh hasil prediksi tanpa simpan file di server (keamanan/ruang disk)
         show_section_title("📥 Export Hasil Forecast")
         if sarima_params:
             csv_bytes = build_forecast_csv(forecast_df, sarima_params, category or "Data")

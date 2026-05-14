@@ -11,13 +11,21 @@ from src.utils.constants import (
 
 
 def inject_global_css():
-    """Menyuntikkan CSS global ke seluruh aplikasi."""
+    """
+    Menyuntikkan (inject) kumpulan kode CSS (Cascading Style Sheets) ke seluruh aplikasi.
+    Fungsi ini harus dipanggil di paling awal pada `app.py` agar Streamlit merender UI 
+    dengan gaya custom kita, bukan gaya default Streamlit.
+    """
+    # st.markdown dengan unsafe_allow_html=True memungkinkan tag <style> dirender oleh browser
     st.markdown(f"""
     <style>
     /* ── Google Fonts ── */
+    /* Mengimpor font 'Inter' dari Google Fonts untuk tampilan yang lebih modern & bersih */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     /* ── Root Variables ── */
+    /* Variabel warna global yang diambil dari constants.py. 
+       Memudahkan penggantian warna serentak hanya dengan mengubah constants.py */
     :root {{
         --primary: {COLOR_PRIMARY};
         --secondary: {COLOR_SECONDARY};
@@ -28,13 +36,14 @@ def inject_global_css():
         --card: {COLOR_CARD};
         --text: {COLOR_TEXT_MAIN};
         --muted: {COLOR_TEXT_MUTED};
-        --radius: 12px;
-        --shadow: 0 2px 12px rgba(0,0,0,0.08);
-        --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
-        --transition: all 0.2s ease;
+        --radius: 12px; /* Radius sudut standar untuk card/tombol */
+        --shadow: 0 2px 12px rgba(0,0,0,0.08); /* Efek bayangan standar */
+        --shadow-hover: 0 6px 24px rgba(0,0,0,0.14); /* Bayangan saat kursor di atas elemen */
+        --transition: all 0.2s ease; /* Kecepatan animasi transisi standar */
     }}
 
     /* ── Global Reset ── */
+    /* Memaksa seluruh teks menggunakan font Inter */
     html, body {{
         font-family: 'Inter', sans-serif !important;
     }}
@@ -42,14 +51,15 @@ def inject_global_css():
     .main .block-container, .main .block-container * {{
         font-family: 'Inter', sans-serif !important;
     }}
-    /* Elemen teks umum di luar sidebar */
+    /* Elemen teks umum di luar sidebar diberi warna dari variabel --text */
     p, li, span:not([data-testid]), label:not([data-testid]) {{
         color: var(--text);
     }}
 
     /* ── Sidebar Toggle Button (buka/tutup) ── */
-    /* Streamlit punya tombol collapse bawaan tapi tersembunyi — kita paksa tampilkan */
-    /* Selector untuk tombol toggle sidebar di berbagai versi Streamlit */
+    /* Streamlit memiliki tombol collapse/expand sidebar bawaan, namun di layout default
+       kadang tersembunyi. Kode ini memaksa tombol tersebut agar selalu terlihat dan bisa diklik. */
+    /* Selector untuk tombol toggle sidebar di berbagai versi Streamlit (karena class-nya sering berubah-ubah) */
     [data-testid="collapsedControl"],
     button[kind="header"],
     .st-emotion-cache-1dp5vir,
@@ -60,24 +70,25 @@ def inject_global_css():
         pointer-events: auto !important;
     }}
 
-    /* Style tombol toggle agar serasi dengan tema */
+    /* Style tombol toggle (saat sidebar ditutup) agar serasi dengan tema (berbentuk kotak memanjang di pojok kiri) */
     [data-testid="collapsedControl"] button,
     [data-testid="stSidebarCollapsedControl"] button {{
         background-color: {COLOR_PRIMARY} !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 0 8px 8px 0 !important;
+        border-radius: 0 8px 8px 0 !important; /* Melengkung di sisi kanan saja */
         width: 2rem !important;
         height: 2.5rem !important;
         box-shadow: 2px 2px 8px rgba(0,0,0,0.2) !important;
         transition: all 0.2s ease !important;
     }}
+    /* Efek saat kursor berada di atas tombol toggle */
     [data-testid="collapsedControl"] button:hover,
     [data-testid="stSidebarCollapsedControl"] button:hover {{
         background-color: {COLOR_SECONDARY} !important;
         box-shadow: 3px 3px 12px rgba(0,0,0,0.3) !important;
     }}
-    /* Icon svg di dalamnya tetap putih */
+    /* Icon svg (logo 'x' atau burger) di dalamnya tetap putih */
     [data-testid="collapsedControl"] button svg,
     [data-testid="stSidebarCollapsedControl"] button svg {{
         fill: #ffffff !important;
@@ -85,12 +96,12 @@ def inject_global_css():
         color: #ffffff !important;
     }}
 
-    /* Tombol collapse/expand yang ada di dalam sidebar (tanda >) */
+    /* Tombol collapse/expand yang ada di dalam sidebar (tanda > untuk menutup sidebar) */
     [data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {{
         background-color: rgba(255,255,255,0.15) !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 50% !important;
+        border-radius: 50% !important; /* Bentuk lingkaran penuh */
         width: 1.8rem !important;
         height: 1.8rem !important;
         transition: all 0.2s ease !important;
@@ -103,24 +114,28 @@ def inject_global_css():
     }}
 
     /* ── Background ── */
+    /* Warna latar belakang utama halaman web */
     .stApp {{
         background-color: var(--bg) !important;
     }}
 
     /* ── Sidebar ── */
+    /* Memberi warna biru gelap pada seluruh panel sidebar */
     section[data-testid="stSidebar"] {{
         background: var(--primary) !important;
         border-right: none !important;
     }}
+    /* Memaksa semua teks di dalam sidebar menjadi warna putih */
     section[data-testid="stSidebar"] * {{
         color: #ffffff !important;
     }}
 
     /* ── Override Tombol Navigasi Sidebar ── */
+    /* Mengubah desain tombol menu utama yang ada di sidebar */
     section[data-testid="stSidebar"] .stButton button {{
         background: transparent !important;
         border: none !important;
-        border-left: 3px solid transparent !important;
+        border-left: 3px solid transparent !important; /* Siapkan border kiri untuk indikator aktif nanti */
         border-radius: 8px !important;
         color: rgba(255,255,255,0.85) !important;
         font-family: 'Inter', sans-serif !important;
@@ -135,11 +150,13 @@ def inject_global_css():
         justify-content: flex-start !important;
         box-shadow: none !important;
     }}
+    /* Efek saat tombol menu dilewati kursor */
     section[data-testid="stSidebar"] .stButton button:hover {{
         background: rgba(255,255,255,0.12) !important;
         color: #ffffff !important;
         border-left-color: rgba(33,150,243,0.6) !important;
     }}
+    /* Hilangkan garis tebal biru bawaan Streamlit saat tombol diklik (focus) */
     section[data-testid="stSidebar"] .stButton button:focus {{
         box-shadow: none !important;
         outline: none !important;
@@ -149,6 +166,7 @@ def inject_global_css():
         font-size: inherit !important;
     }}
 
+    /* Radio button di sidebar (misal untuk memilih status workflow) */
     section[data-testid="stSidebar"] .stRadio label {{
         color: rgba(255,255,255,0.85) !important;
         font-size: 0.9rem !important;
@@ -158,13 +176,15 @@ def inject_global_css():
     }}
     section[data-testid="stSidebar"] .stRadio label:hover {{
         color: #ffffff !important;
-        padding-left: 4px !important;
+        padding-left: 4px !important; /* Efek geser sedikit ke kanan saat hover */
     }}
 
     /* ── Hide Streamlit Default Elements ── */
+    /* Menyembunyikan elemen bawaan Streamlit seperti menu hamburger di atas kanan, footer "Made with Streamlit" */
     #MainMenu, footer, header {{
         visibility: hidden;
     }}
+    /* Menentukan padding atas/bawah dan lebar maksimum halaman */
     .block-container {{
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
@@ -172,7 +192,7 @@ def inject_global_css():
     }}
 
     /* ── Main Content Buttons (non-sidebar) ── */
-    /* Default / secondary button */
+    /* Default / secondary button (Tombol biasa di area konten utama) */
     .main .stButton button,
     .block-container .stButton button {{
         background-color: #ffffff !important;
@@ -192,22 +212,23 @@ def inject_global_css():
         background-color: #f0f4f8 !important;
         border-color: #a0aec0 !important;
         box-shadow: 0 3px 8px rgba(0,0,0,0.12) !important;
-        transform: translateY(-1px) !important;
+        transform: translateY(-1px) !important; /* Efek tombol naik sedikit */
     }}
-    /* Primary button (type="primary") */
+    
+    /* Primary button (Tombol utama, type="primary" di Streamlit) */
     .main .stButton button[kind="primary"],
     .block-container .stButton button[kind="primary"] {{
-        background-color: {COLOR_SECONDARY} !important;
+        background-color: {COLOR_SECONDARY} !important; /* Warna biru cerah */
         color: #ffffff !important;
         border: none !important;
         box-shadow: 0 2px 8px rgba(0,102,204,0.35) !important;
     }}
     .main .stButton button[kind="primary"]:hover,
     .block-container .stButton button[kind="primary"]:hover {{
-        background-color: #0055aa !important;
+        background-color: #0055aa !important; /* Lebih gelap saat dihover */
         box-shadow: 0 4px 14px rgba(0,102,204,0.45) !important;
     }}
-    /* Teks dalam button selalu inherit warna button */
+    /* Memastikan teks p di dalam tombol menuruti warna induk tombolnya */
     .main .stButton button p,
     .block-container .stButton button p {{
         color: inherit !important;
@@ -216,6 +237,7 @@ def inject_global_css():
     }}
 
     /* ── Card ── */
+    /* Container kotak putih dengan bayangan untuk mengelompokkan elemen */
     .sarima-card {{
         background: var(--card);
         border-radius: var(--radius);
@@ -231,12 +253,13 @@ def inject_global_css():
     }}
 
     /* ── Metric Cards ── */
+    /* Kotak khusus untuk menampilkan angka metrik (MAE, Jumlah Observasi, dll) */
     .metric-card {{
         background: var(--card);
         border-radius: var(--radius);
         padding: 1.2rem 1.4rem;
         box-shadow: var(--shadow);
-        border-left: 4px solid var(--secondary);
+        border-left: 4px solid var(--secondary); /* Garis tegas di sisi kiri */
         transition: var(--transition);
         text-align: center;
     }}
@@ -244,6 +267,7 @@ def inject_global_css():
         box-shadow: var(--shadow-hover);
         transform: translateY(-2px);
     }}
+    /* Label teks kecil di atas angka metrik */
     .metric-label {{
         font-size: 0.78rem;
         font-weight: 600;
@@ -252,12 +276,14 @@ def inject_global_css():
         letter-spacing: 0.05em;
         margin-bottom: 0.4rem;
     }}
+    /* Angka besar utama */
     .metric-value {{
         font-size: 1.8rem;
         font-weight: 700;
         color: var(--primary);
         line-height: 1.1;
     }}
+    /* Keterangan tambahan di bawah angka */
     .metric-sub {{
         font-size: 0.75rem;
         color: var(--muted);
@@ -265,6 +291,7 @@ def inject_global_css():
     }}
 
     /* ── Page Header ── */
+    /* Header besar melintang di setiap halaman (kecuali halaman utama) */
     .page-header {{
         background: var(--primary);
         color: #ffffff;
@@ -272,8 +299,9 @@ def inject_global_css():
         border-radius: var(--radius);
         margin-bottom: 2rem;
         position: relative;
-        overflow: hidden;
+        overflow: hidden; /* Sembunyikan elemen dekorasi yang keluar batas kotak */
     }}
+    /* Elemen dekoratif lingkaran transparan di pojok kanan atas header */
     .page-header::after {{
         content: '';
         position: absolute;
@@ -298,6 +326,7 @@ def inject_global_css():
     }}
 
     /* ── Alert Boxes ── */
+    /* Kotak pesan (Notifikasi, Error, Warning) */
     .alert {{
         padding: 0.9rem 1.2rem;
         border-radius: 8px;
@@ -306,8 +335,9 @@ def inject_global_css():
         line-height: 1.5;
         display: flex;
         align-items: flex-start;
-        gap: 0.7rem;
+        gap: 0.7rem; /* Jarak antara icon dan teks */
     }}
+    /* Varian warna alert berdasarkan state-nya */
     .alert-success {{
         background: rgba(46,204,113,0.1);
         border-left: 4px solid {COLOR_SUCCESS};
@@ -330,6 +360,7 @@ def inject_global_css():
     }}
 
     /* ── Step Indicator ── */
+    /* UI yang menunjukkan tahapan proses (misal: "1. Upload Data" -> "2. Pemodelan" ...) */
     .step-flow {{
         display: flex;
         justify-content: space-between;
@@ -346,6 +377,7 @@ def inject_global_css():
         flex: 1;
         min-width: 70px;
     }}
+    /* Lingkaran pembungkus ikon/nomor tahapan */
     .step-icon {{
         width: 48px;
         height: 48px;
@@ -358,10 +390,12 @@ def inject_global_css():
         font-size: 1.2rem;
         transition: var(--transition);
     }}
+    /* Saat tahap selesai, ubah jadi hijau solid */
     .step-icon.done {{
         background: {COLOR_SUCCESS};
         border-color: {COLOR_SUCCESS};
     }}
+    /* Saat tahap ini aktif/sedang dikerjakan, ubah jadi biru pekat dengan glow effect */
     .step-icon.active {{
         background: {COLOR_SECONDARY};
         border-color: {COLOR_SECONDARY};
@@ -374,6 +408,7 @@ def inject_global_css():
         text-align: center;
         max-width: 80px;
     }}
+    /* Garis tipis penyambung antar lingkaran tahapan */
     .step-connector {{
         height: 2px;
         flex: 1;
@@ -384,11 +419,13 @@ def inject_global_css():
     }}
 
     /* ── Tabel ── */
+    /* Styling khusus tabel dataframe yang kita custom di tables.py */
     .dataframe {{
         border: none !important;
         border-radius: 8px !important;
         overflow: hidden !important;
     }}
+    /* Header tabel (Th) menjadi biru gelap */
     .dataframe th {{
         background: {COLOR_PRIMARY} !important;
         color: white !important;
@@ -397,16 +434,19 @@ def inject_global_css():
         font-size: 0.85rem !important;
         letter-spacing: 0.03em !important;
     }}
+    /* Sel baris tabel */
     .dataframe td {{
         padding: 0.5rem 1rem !important;
         font-size: 0.88rem !important;
         border-bottom: 1px solid rgba(0,0,0,0.05) !important;
     }}
+    /* Efek hover pada baris tabel (seluruh baris jadi sedikit biru jika disorot) */
     .dataframe tr:hover td {{
         background: rgba(33,150,243,0.04) !important;
     }}
 
     /* ── Sidebar Nav Button ── */
+    /* Tombol navigasi kustom buatan JS injection (di sidebar.py) */
     .nav-btn {{
         width: 100%;
         background: transparent;
@@ -427,6 +467,7 @@ def inject_global_css():
         background: rgba(255,255,255,0.1);
         color: #ffffff;
     }}
+    /* State aktif: tombol menyala warna biru terang */
     .nav-btn.active {{
         background: rgba(33,150,243,0.25);
         color: #ffffff;
@@ -435,6 +476,7 @@ def inject_global_css():
     }}
 
     /* ── Badge Status ── */
+    /* Pil/Kapsul label kecil berwana */
     .badge {{
         display: inline-block;
         padding: 0.15rem 0.55rem;
@@ -449,16 +491,18 @@ def inject_global_css():
     .badge-info    {{ background: rgba(33,150,243,0.15); color: #0d47a1; }}
 
     /* ── Section Title ── */
+    /* Judul bab dalam konten halaman (menggunakan st.markdown dari messages.py) */
     .section-title {{
         font-size: 1.1rem;
         font-weight: 700;
         color: var(--primary);
         margin: 1.5rem 0 0.8rem 0;
         padding-bottom: 0.4rem;
-        border-bottom: 2px solid rgba(33,150,243,0.2);
+        border-bottom: 2px solid rgba(33,150,243,0.2); /* Garis bawah biru transparan */
     }}
 
     /* ── Hero Home ── */
+    /* Banner besar bergaya gradien biru di Halaman Utama (Beranda) */
     .hero-container {{
         background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, #1565C0 100%);
         border-radius: 16px;
@@ -468,6 +512,7 @@ def inject_global_css():
         overflow: hidden;
         margin-bottom: 2rem;
     }}
+    /* Dekorasi lingkaran di belakang banner hero */
     .hero-container::before {{
         content: '';
         position: absolute;
@@ -488,6 +533,7 @@ def inject_global_css():
         background: rgba(255,255,255,0.04);
         border-radius: 50%;
     }}
+    /* Teks tag versi kecil di atas judul ("v.1.0" dsb) */
     .hero-tag {{
         background: rgba(255,255,255,0.15);
         color: rgba(255,255,255,0.9);
@@ -499,12 +545,14 @@ def inject_global_css():
         margin-bottom: 1rem;
         letter-spacing: 0.05em;
     }}
+    /* Judul raksasa di Beranda */
     .hero-title {{
         font-size: 2.2rem;
         font-weight: 800;
         margin: 0;
         line-height: 1.2;
     }}
+    /* Teks penjelasan panjang di bawah judul Beranda */
     .hero-subtitle {{
         font-size: 1rem;
         opacity: 0.85;
@@ -514,12 +562,13 @@ def inject_global_css():
     }}
 
     /* ── Force Light Mode — override OS/browser dark preference ── */
-    /* Ini memastikan semua elemen native browser (scrollbar, input, dll)
-       ikut render dalam mode terang tanpa terpengaruh setting sistem. */
+    /* Aturan paling fatal: Sesuai kesepakatan, sistem ini memaksa tampilan LIGHT MODE 
+       walaupun komputer/HP pengguna sedang memakai mode Dark.
+       Ini akan mengatur agar komponen native seperti kalender picker, dropdown bawaan, dll
+       tetap muncul terang (warna font hitam, latar putih). */
     :root, html, body {{
         color-scheme: light !important;
     }}
 
     </style>
     """, unsafe_allow_html=True)
-

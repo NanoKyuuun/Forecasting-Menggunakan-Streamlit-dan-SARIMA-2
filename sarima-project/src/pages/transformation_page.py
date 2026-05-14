@@ -15,12 +15,19 @@ import pandas as pd
 
 
 def render():
+    """
+    M-render isi halaman 'Transformasi Time Series'.
+    Di halaman ini, dataframe yang cuma berupa tabel biasa (baris-kolom) 
+    diubah secara struktural menjadi format indeks waktu (Time Series Index)
+    yang wajib dimiliki sebelum algoritma SARIMA bisa bekerja.
+    """
     page_header(
         "Transformasi Time Series",
         "Membentuk indeks waktu dan mengubah data bersih menjadi format time series.",
         "🔄",
     )
 
+    # Tarik data yang sudah dibersihkan dari halaman Preprocessing
     clean_df = st.session_state.get(SS_CLEAN_DATA)
     if clean_df is None:
         show_warning("Data belum diproses. Kembali ke Preprocessing.")
@@ -30,6 +37,9 @@ def render():
         return
 
     # ── Pilih Kategori ────────────────────────────────────────
+    # Jika dataset mengandung banyak kategori (misal: Teknik Mesin, Ilmu Komputer, dll),
+    # SARIMA cuma bisa jalan untuk SATU kategori saja setiap kali running.
+    # Jadi kita minta user milih dulu.
     categories = get_available_categories(clean_df)
 
     if categories:
@@ -58,18 +68,21 @@ def render():
         st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Bangun Time Series ────────────────────────────────────
+    # Proses inti: ubah subset dataframe (berdasarkan kategori) menjadi Pandas Series ber-index Datetime
     try:
         ts, frequency, s_period = build_time_series(clean_df, selected_cat)
     except Exception as e:
         show_error(f"Gagal membentuk time series: {e}")
         return
 
+    # Simpan "bahan baku" model ke memori
     st.session_state[SS_TIME_SERIES]       = ts
     st.session_state[SS_SELECTED_CATEGORY] = selected_cat
     st.session_state[SS_DATA_FREQUENCY]    = frequency
 
     # ── Ringkasan Time Series ─────────────────────────────────
     show_section_title("📊 Ringkasan Time Series")
+    # Menampilkan informasi teknis hasil transformasi
     show_metrics_row([
         {"label": "Jumlah Observasi", "value": str(len(ts)),        "color": "#2196F3"},
         {"label": "Frekuensi Data",   "value": frequency,           "color": "#4CAF50"},
@@ -80,6 +93,7 @@ def render():
     show_success(f"Time series terbentuk: {len(ts)} observasi, frekuensi {frequency}.")
 
     # ── Catatan keterbatasan ──────────────────────────────────
+    # Validasi metodologi: jika n < 30, warning user bahwa "SARIMA butuh data yang lebih banyak".
     if len(ts) < 30:
         show_methodological_note(
             "Data historis yang tersedia masih terbatas (kurang dari 30 observasi). "
@@ -91,10 +105,13 @@ def render():
 
     # ── Tabel Time Series ─────────────────────────────────────
     show_section_title("📋 Tabel Data Time Series")
+    # Karena 'ts' itu tipe-nya pandas.Series, kita ubah sementara ke DataFrame 
+    # biar rapi saat digambar di tabel HTML
     ts_df = pd.DataFrame({"periode": ts.index.astype(str), "nilai": ts.values})
     show_dataframe(ts_df, max_rows=10)
 
     # ── Grafik Awal ───────────────────────────────────────────
+    # Memperlihatkan grafik khusus 1 kategori yang terpilih
     show_section_title("📈 Tren Historis Awal")
     cat_label = f" — {selected_cat}" if selected_cat else ""
     fig = chart_historical_trend(ts, title=f"Tren Historis{cat_label}", y_label="Jumlah Pendaftar")

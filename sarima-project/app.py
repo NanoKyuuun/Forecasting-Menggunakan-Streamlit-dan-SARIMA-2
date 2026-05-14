@@ -6,7 +6,7 @@ import streamlit as st
 import sys
 import os
 
-# Tambahkan root project ke path agar import src.* bekerja
+# Tambahkan root project ke path agar struktur import src.* (absolute import) bekerja dengan baik di server/docker
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.utils.constants import (
@@ -23,7 +23,7 @@ from src.ui.theme import inject_global_css
 from src.ui.sidebar import render_sidebar
 
 
-# ── Konfigurasi Halaman ────────────────────────────────────
+# ── Konfigurasi Halaman Dasar (Wajib dipanggil paling pertama di Streamlit) ──
 st.set_page_config(
     page_title=APP_TITLE,
     page_icon="📊",
@@ -33,7 +33,10 @@ st.set_page_config(
 
 
 def init_session_state():
-    """Inisialisasi semua session state key yang diperlukan."""
+    """
+    Inisialisasi semua variabel global / session state key yang diperlukan aplikasi.
+    Tujuannya agar tidak ada error 'KeyError' saat berpindah halaman.
+    """
     defaults = {
         "current_page":      PAGE_HOME,
         SS_RAW_DATA:         None,
@@ -56,7 +59,11 @@ def init_session_state():
 
 
 def route_page(current_page: str):
-    """Router halaman berdasarkan current_page di session state."""
+    """
+    Router halaman: Mengatur file mana yang dieksekusi berdasarkan pilihan halaman (current_page).
+    Sistem routing manual ini digunakan untuk menyembunyikan halaman dari sidebar bawaan Streamlit
+    dan memungkinkan alur maju/mundur menggunakan tombol khusus di dalam UI.
+    """
     if current_page == PAGE_HOME:
         from src.pages.home_page import render
     elif current_page == PAGE_UPLOAD:
@@ -80,16 +87,22 @@ def route_page(current_page: str):
     elif current_page == PAGE_CONCLUSION:
         from src.pages.conclusion_page import render
     else:
+        # Fallback halaman utama jika key tidak dikenal
         from src.pages.home_page import render
 
+    # Render isi dari halaman yang di-import
     render()
 
 
 def main():
-    init_session_state()
-    inject_global_css()
-    render_sidebar()
+    """
+    Fungsi utama yang menjalankan seluruh kerangka kerja aplikasi.
+    """
+    init_session_state()        # 1. Siapkan memori
+    inject_global_css()         # 2. Suntikkan kode gaya (CSS Theme)
+    render_sidebar()            # 3. Tampilkan Sidebar Navigasi di sebelah kiri
 
+    # 4. Ambil halaman aktif saat ini dan arahkan ke file yang tepat
     current_page = st.session_state.get("current_page", PAGE_HOME)
     route_page(current_page)
 

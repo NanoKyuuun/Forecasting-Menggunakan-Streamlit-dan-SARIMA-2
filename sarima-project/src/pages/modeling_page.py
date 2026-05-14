@@ -18,12 +18,19 @@ from src.utils.helpers import get_seasonal_period
 
 
 def render():
+    """
+    M-render isi halaman 'Pemodelan SARIMA'.
+    Inti (Core) dari aplikasi. Tempat dimana pengguna menentukan parameter:
+    p, d, q (Non-musiman) dan P, D, Q (Musiman), atau menyerahkan pencarian parameter
+    kepada fungsi Grid Search otomatis (Auto-search).
+    """
     page_header(
         "Pemodelan SARIMA",
         "Fitting model SARIMA dengan parameter manual atau auto-search terbatas.",
         "🤖",
     )
 
+    # Tarik data time series dan tipe frekuensinya (Tahunan/Bulanan)
     ts        = st.session_state.get(SS_TIME_SERIES)
     frequency = st.session_state.get(SS_DATA_FREQUENCY, "Tahunan")
 
@@ -34,9 +41,11 @@ def render():
             st.rerun()
         return
 
+    # Ambil periode musiman dasar (misal s=12 jika bulanan)
     s_default = get_seasonal_period(frequency)
 
     # ── Mode Parameter ────────────────────────────────────────
+    # Pengguna bisa memilih antara mode Manual atau Otomatis
     show_section_title("⚙️ Mode Parameter SARIMA")
     mode = st.radio(
         "Pilih mode parameter:",
@@ -50,6 +59,7 @@ def render():
         show_info("Masukkan parameter SARIMA secara manual. Untuk data tahunan dengan observasi sedikit, mulai dengan parameter sederhana (1,1,0)(0,0,0)[1].")
         st.markdown("<br/>", unsafe_allow_html=True)
 
+        # Buat UI berupa 4 kolom agar kotak-kotak input terlihat rapi berdampingan
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.markdown("**Non-Musiman**")
@@ -71,13 +81,16 @@ def render():
         with col4:
             st.markdown("**&nbsp;**", unsafe_allow_html=True)
             st.markdown("<br/>", unsafe_allow_html=True)
+            # Preview visual parameter yang sedang dipilih di kotak kecil
             sarima_params_card({"p": p, "d": d, "q": q, "P": P, "D": D, "Q": Q, "s": s})
 
         run_btn = st.button("🚀 Jalankan Model SARIMA", type="primary", use_container_width=False)
 
+        # Proses fitting hanya dijalankan ketika tombol diklik
         if run_btn:
             with st.spinner("Menjalankan fitting model..."):
                 result = fit_sarima(ts, (p, d, q), (P, D, Q, s))
+            # Panggil fungsi khusus internal di bawah file ini untuk menampilkan hasilnya
             _display_result(result, ts, frequency)
 
     else:
@@ -89,7 +102,8 @@ def render():
         )
         st.markdown("<br/>", unsafe_allow_html=True)
 
-        total_combinations = 3 * 2 * 3 * 2 * 2 * 2  # range terbatas
+        # Total loop simulasi yang akan dicoba (3x2x3 x 2x2x2) = 144 kombinasi maksimal
+        total_combinations = 3 * 2 * 3 * 2 * 2 * 2  
         st.markdown(
             f'<div class="alert alert-warning"><span>⏱️</span>'
             f'<span>Akan mencoba <strong>{total_combinations}</strong> kombinasi parameter. Proses mungkin memakan beberapa menit.</span></div>',
@@ -99,6 +113,7 @@ def render():
         run_auto = st.button("🔍 Mulai Auto-search", type="primary")
 
         if run_auto:
+            # Sediakan UI indikator proses (Loading Bar) yang bergerak maju
             progress_bar = st.progress(0)
             status_text = st.empty()
 
@@ -107,6 +122,7 @@ def render():
                 status_text.text(f"Menguji kombinasi {current}/{total}...")
 
             with st.spinner("Mencari parameter terbaik..."):
+                # Kirim callback update_progress agar bar bisa bergerak
                 result = auto_search_sarima(ts, s_default, progress_callback=update_progress)
 
             progress_bar.progress(1.0)
@@ -114,7 +130,7 @@ def render():
             _display_result(result, ts, frequency)
 
     # ── Navigasi Permanen (selalu tampil, baca dari session state) ────
-    # Jika model sudah ada di session state tampilkan di bawah halaman
+    # Jika model sudah sukses dikalkulasi sebelumnya, buka akses ke halaman evaluasi
     st.markdown("<br/>", unsafe_allow_html=True)
     model_ready = st.session_state.get(SS_MODEL_RESULT) is not None
     col_nav1, col_nav2, _ = st.columns([2, 2, 2])
@@ -128,17 +144,23 @@ def render():
             type="primary",
             use_container_width=True,
             key="btn_next_evaluasi",
-            disabled=not model_ready,
+            disabled=not model_ready, # Tombol abu-abu tidak bisa diklik jika belum ada model
         ):
             st.session_state["current_page"] = "Evaluasi Model"
             st.rerun()
+            
     if not model_ready:
         st.caption("⬆️ Jalankan model terlebih dahulu untuk melanjutkan.")
 
 
 
 def _display_result(result: dict, ts, frequency: str):
-    """Tampilkan hasil fitting model."""
+    """
+    Fungsi internal/helper untuk mencetak hasil fitting SARIMA ke layar.
+    Fungsi ini dipisahkan agar bisa dipakai dua kali (oleh mode Manual dan Auto-Search)
+    tanpa harus mengulang/menulis ulang (duplikasi) blok kode UI yang sama.
+    """
+    # 1. Cek apakah ada pesan kegagalan matematis
     if not result["success"]:
         show_error(
             f"Model SARIMA gagal dijalankan. Error: {result['error']}<br/>"
@@ -146,10 +168,11 @@ def _display_result(result: dict, ts, frequency: str):
         )
         return
 
-    # Simpan ke session state
+    # 2. Amankan hasil yang sukses ke Memori Session
     st.session_state[SS_SARIMA_PARAMS]    = result["params"]
     st.session_state[SS_MODEL_RESULT]     = result
-    st.session_state[SS_EVAL_METRICS]     = None  # Reset
+    # Jika model berubah, maka hasil evaluasi dan ramalan di memori dibersihkan (reset)
+    st.session_state[SS_EVAL_METRICS]     = None  
     st.session_state[SS_FORECAST_RESULT]  = None
 
     params = result["params"]
@@ -174,8 +197,9 @@ def _display_result(result: dict, ts, frequency: str):
         ])
 
     # ── Grafik Actual vs Fitted ───────────────────────────────
+    # Memeriksa sekilas bentuk kurva hasil model dibandingkan aslinya
     if len(result["fitted"]) > 0:
-        show_section_title("📊 Aktual vs Fitted")
+        show_section_title("📊 Aktual vs Nilai Tebakan Model")
         fig = chart_actual_vs_fitted(ts, result["fitted"], title="Aktual vs Nilai Fitted")
         st.plotly_chart(fig, use_container_width=True)
 

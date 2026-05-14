@@ -18,16 +18,24 @@ from src.utils.helpers import format_number, format_percentage
 
 
 def render():
+    """
+    M-render isi halaman 'Evaluasi Model'.
+    Halaman ini bertugas untuk membuktikan secara kuantitatif apakah model SARIMA
+    yang dibentuk di halaman sebelumnya layak dipakai atau tidak, 
+    dengan menghitung selisih antara data asli (Aktual) dan garis prediksi (Fitted/Residuals).
+    """
     page_header(
         "Evaluasi Model",
         "Penilaian performa model SARIMA menggunakan metrik MAE, MSE, RMSE, dan MAPE.",
         "📏",
     )
 
+    # Tarik data dan hasil model dari session_state
     ts           = st.session_state.get(SS_TIME_SERIES)
     model_result = st.session_state.get(SS_MODEL_RESULT)
     sarima_params = st.session_state.get(SS_SARIMA_PARAMS)
 
+    # Pastikan model sudah berhasil dibuat sebelumnya
     if ts is None or model_result is None:
         show_warning("Model SARIMA belum dijalankan. Kembali ke Pemodelan.")
         if st.button("← Pemodelan SARIMA"):
@@ -36,11 +44,13 @@ def render():
         return
 
     # ── Hitung Metrik ─────────────────────────────────────────
+    # Kirim data aktual (ts) dan data simulasi (fitted) untuk dihitung selisih errornya
     metrics = calculate_metrics(ts, model_result["fitted"])
     st.session_state[SS_EVAL_METRICS] = metrics
 
     # ── Metric Cards ──────────────────────────────────────────
     show_section_title("📊 Hasil Evaluasi Model")
+    # Tampilkan error secara visual menggunakan card yang ada di ui.cards
     show_metrics_row([
         {"label": "MAE",  "value": format_number(metrics.get("MAE"),  4), "color": "#2196F3"},
         {"label": "MSE",  "value": format_number(metrics.get("MSE"),  4), "color": "#9C27B0"},
@@ -55,9 +65,11 @@ def render():
     col_table, col_interp = st.columns([2, 1])
 
     with col_table:
+        # Tampilkan penjelasan panjang dari masing-masing rumus MAE, MSE, dll.
         show_metrics_table(metrics)
 
     with col_interp:
+        # Kotak penjelasan interpretasi untuk orang awam (Kurang/Cukup/Sangat Akurat)
         mape_val = metrics.get("MAPE", 0) or 0
         rmse_val = metrics.get("RMSE", 0) or 0
         interp   = metrics.get("mape_interpretation", "—")
@@ -80,11 +92,13 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Grafik Aktual vs Fitted ───────────────────────────────
+    # Membandingkan secara visual seberapa dekat garis prediksi mengikuti garis aktual
     show_section_title("📈 Grafik Aktual vs Fitted")
     fig_avf = chart_actual_vs_fitted(ts, model_result["fitted"])
     st.plotly_chart(fig_avf, use_container_width=True)
 
     # ── Grafik Residual ───────────────────────────────────────
+    # Residual adalah sisa error murni dari prediksi. Idealnya residual berada di sekitar garis nol (0).
     if len(model_result.get("residuals", [])) > 0:
         show_section_title("📉 Grafik Residual")
         fig_resid = chart_residuals(model_result["residuals"])
@@ -95,6 +109,8 @@ def render():
         )
 
     # ── Catatan Metodologis ───────────────────────────────────
+    # Jika datanya terlalu sedikit (<= 30), ingatkan user bahwa error kecil belum tentu bagus
+    # (bisa jadi cuma karena kebetulan overfitting terhadap data yg sedikit)
     if len(ts) < 30:
         show_methodological_note(
             "Nilai metrik evaluasi pada data terbatas perlu diinterpretasi dengan hati-hati. "

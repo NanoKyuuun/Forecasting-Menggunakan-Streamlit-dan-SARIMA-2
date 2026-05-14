@@ -18,12 +18,19 @@ from src.utils.export import build_forecast_csv, get_download_filename
 
 
 def render():
+    """
+    M-render isi halaman 'Kesimpulan'.
+    Halaman terakhir dari alur aplikasi utama. Berfungsi merangkum semua yang telah 
+    terjadi dari awal (data yang dipakai, model terpilih, error yang didapat, 
+    hingga hasil prediksi masa depan) dan memberikan rekomendasi penggunaan hasil.
+    """
     page_header(
         "Kesimpulan",
         "Ringkasan akhir hasil analisis, evaluasi model, dan rekomendasi penggunaan forecast.",
         "📋",
     )
 
+    # Tarik semua state penting dari memori Streamlit
     ts             = st.session_state.get(SS_TIME_SERIES)
     sarima_params  = st.session_state.get(SS_SARIMA_PARAMS)
     model_result   = st.session_state.get(SS_MODEL_RESULT)
@@ -33,9 +40,11 @@ def render():
     frequency      = st.session_state.get(SS_DATA_FREQUENCY, "—")
     file_name      = st.session_state.get(SS_FILE_NAME, "—")
 
+    # Cek kelengkapan
     has_model    = model_result is not None
     has_forecast = forecast_result is not None and forecast_result.get("success", False)
 
+    # Cegah user lompat ke halaman ini jika model belum pernah dihitung
     if not has_model:
         show_warning(
             "Analisis belum selesai. Harap menyelesaikan proses dari Upload Dataset hingga Forecasting "
@@ -50,6 +59,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── 1. Ringkasan Dataset ──────────────────────────────────
+    # Menampilkan ulang data apa yang barusan diolah
     show_section_title("📂 1. Ringkasan Dataset")
     n_obs = len(ts) if ts is not None else 0
     show_metrics_row([
@@ -62,6 +72,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── 2. Model SARIMA ───────────────────────────────────────
+    # Menampilkan ulang kombinasi parameter terbaik yang ditemukan
     show_section_title("🤖 2. Model SARIMA yang Digunakan")
     if sarima_params:
         col_model, col_fit = st.columns([2, 1])
@@ -78,6 +89,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── 3. Evaluasi Model ─────────────────────────────────────
+    # Menampilkan tingkat error (MAE, RMSE, MAPE)
     show_section_title("📏 3. Evaluasi Model")
     if eval_metrics:
         show_metrics_row([
@@ -92,6 +104,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── 4. Hasil Forecast ─────────────────────────────────────
+    # Menampilkan kesimpulan masa depan (angka prediksi pertama dan terakhir)
     show_section_title("🔮 4. Hasil Forecast")
     if has_forecast:
         forecast_df = forecast_result["forecast_df"]
@@ -135,6 +148,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── 5. Narasi Kesimpulan ──────────────────────────────────
+    # Merangkai kalimat otomatis berdasarkan kombinasi parameter dan evaluasi (Auto-generated Text)
     show_section_title("📝 5. Narasi Kesimpulan")
     mape_str = f"{eval_metrics.get('MAPE', 0):.2f}%" if eval_metrics else "—"
     rmse_str = format_number(eval_metrics.get("RMSE"), 2) if eval_metrics else "—"
@@ -199,6 +213,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Download Akhir ────────────────────────────────────────
+    # Tombol download di paling bawah halaman untuk mengambil laporan final
     if has_forecast and sarima_params:
         show_section_title("📥 Download Hasil Forecast")
         csv_bytes = build_forecast_csv(

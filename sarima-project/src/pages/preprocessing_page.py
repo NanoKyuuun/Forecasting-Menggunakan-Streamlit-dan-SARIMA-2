@@ -12,12 +12,19 @@ from src.utils.constants import SS_RAW_DATA, SS_COL_MAPPING, SS_CLEAN_DATA, COLO
 
 
 def render():
+    """
+    M-render isi halaman 'Preprocessing Data'.
+    Halaman ini dipanggil setelah validasi. Bertugas membersihkan baris kotor, 
+    mengonversi string tanggal jadi objek Datetime asli, mengubah string angka 
+    menjadi numerik asli, serta membuang duplikat.
+    """
     page_header(
         "Preprocessing Data",
         "Pembersihan data: konversi tipe data, hapus nilai kosong dan duplikasi, serta pengurutan.",
         "🔧",
     )
 
+    # Mengambil dataframe kotor dari memory
     raw_data    = st.session_state.get(SS_RAW_DATA)
     col_mapping = st.session_state.get(SS_COL_MAPPING, {})
 
@@ -28,18 +35,23 @@ def render():
             st.rerun()
         return
 
+    # Tarik nama kolom aslinya
     col_period   = col_mapping.get("periode")
     col_value    = col_mapping.get("nilai")
     col_category = col_mapping.get("kategori")
 
     # ── Jalankan Preprocessing ────────────────────────────────
+    # Panggil file `src/core/preprocessing.py`
     with st.spinner("Membersihkan data..."):
         clean_df, summary = preprocess(raw_data, col_period, col_value, col_category)
+        
+    # Simpan dataframe yang sudah mandi/bersih ke state
     st.session_state[SS_CLEAN_DATA] = clean_df
 
     show_success(f"Preprocessing selesai. Data siap untuk transformasi.")
 
     # ── Ringkasan Perubahan ───────────────────────────────────
+    # Memperlihatkan berapa "sampah" yang dibuang dari raw data
     show_section_title("📊 Ringkasan Preprocessing")
     show_metrics_row([
         {"label": "Baris Sebelum",    "value": f"{summary['before_rows']:,}",       "color": "#9C27B0"},
@@ -51,6 +63,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Detail Proses ─────────────────────────────────────────
+    # Menguraikan tahap-tahap teknis yang dilakukan di latar belakang
     show_section_title("🔍 Detail Proses Pembersihan")
     steps_done = [
         ("Penghapusan baris kosong",        f"{summary['dropped_empty']} baris dihapus"),
@@ -84,6 +97,7 @@ def render():
     )
 
     # ── Preview Data Bersih ───────────────────────────────────
+    # Tampilkan potongannya
     show_section_title("👁️ Preview Data Bersih")
     st.markdown(
         f'<div class="sarima-card" style="padding:0.5rem;margin-bottom:0.5rem;">'
@@ -95,6 +109,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Visualisasi Data Bersih ───────────────────────────────
+    # Sekilas visualisasi Histogram dan Tren untuk memverifikasi proses di atas
     show_section_title("📊 Visualisasi Data Bersih")
     show_info("Grafik berikut menampilkan distribusi dan tren data setelah proses pembersihan.")
 
@@ -127,7 +142,7 @@ def render():
             periode_col = "periode"
             if periode_col in clean_df.columns:
                 df_sorted = clean_df.sort_values(periode_col)
-                # Jika ada kolom kategori, ambil satu kategori saja
+                # Jika ada kolom kategori, plot yang data pertama saja (sebagai sampel ajaib)
                 if "kategori" in df_sorted.columns:
                     first_cat = df_sorted["kategori"].dropna().unique()
                     if len(first_cat) > 0:
@@ -165,4 +180,3 @@ def render():
         if st.button("🔄  Lanjut ke Transformasi", type="primary", use_container_width=True):
             st.session_state["current_page"] = "Transformasi Time Series"
             st.rerun()
-

@@ -22,33 +22,50 @@ from src.utils.helpers import format_number, get_data_quality_label, get_seasona
 
 @st.cache_data(show_spinner=False)
 def _load_reference_data():
-    """Load dataset ideal (bulanan 10 tahun) sebagai referensi perbandingan."""
+    """
+    Fungsi krusial untuk memuat dataset referensi standar (Data Simulasi 10 Tahun) 
+    secara transparan (di-cache agar tidak melambat saat di-load berulang kali).
+    Data ini dipakai murni sebagai "Role Model" untuk membuktikan kepada user
+    bahwa data yang minim (misal cuma 10-20 baris) akan jauh kalah telak akurasinya
+    dibandingkan data ini yang panjangnya >100 baris.
+    """
     try:
+        # Load data sampel
         df = pd.read_csv(SAMPLE_BULANAN_10, encoding="utf-8")
+        
+        # Lakukan tahap preprocessing untuk memastikan bentuk kolomnya bersih
         clean, _ = preprocess(df, "tanggal", "jumlah_pendaftar", "program_studi")
         cats = clean["kategori"].unique().tolist() if "kategori" in clean.columns else []
-        # Bangun ts untuk satu kategori (untuk evaluasi model)
+        
+        # Bangun time series object untuk kategori PERTAMA (sebagai perwakilan yang akan diadu dgn data user)
         cat  = cats[0] if cats else None
         ts, freq, s = build_time_series(clean, cat)
+        
+        # Susun dalam dictionary
         return {
-            "df":       clean,          # <── full dataframe, semua prodi
-            "ts":       ts,             # <── satu kategori untuk evaluasi
+            "df":       clean,          # <── full dataframe, semua prodi (dipakai buat visualisasi)
+            "ts":       ts,             # <── pd.Series 1 kategori untuk test hitung SARIMA
             "freq":     freq,
             "s":        s,
             "category": cat,
             "n_cats":   len(cats),
-            "n_obs_per_cat": len(ts),   # observasi per kategori
-            "n_obs_total": len(clean),  # total baris
+            "n_obs_per_cat": len(ts),   # jumlah baris (observasi) per kategori
+            "n_obs_total": len(clean),  # total semua baris di dataset
         }
     except Exception as e:
         return {"error": str(e)}
 
 
 def _run_model_for_series(ts, s):
-    """Fit SARIMA sederhana untuk perbandingan cepat."""
+    """
+    Fungsi wrapper sederhana yang bertugas menjalankan model SARIMA secara di-balik-layar
+    khusus untuk halaman ini tanpa input dari user, dengan parameter kaku (1,1,0)(0,0,0,s).
+    Kenapa pakai parameter kaku? Supaya "Apple to Apple", adil saat diadu dengan data referensi.
+    """
     try:
         r = fit_sarima(ts, (1, 1, 0), (0, 0, 0, s))
         if r["success"]:
+            # Jika berhasil, langsung hitung nilai erornya
             from src.core.evaluation import calculate_metrics
             m = calculate_metrics(ts, r["fitted"])
             return r, m
@@ -58,16 +75,24 @@ def _run_model_for_series(ts, s):
 
 
 def render():
+    """
+    M-render isi halaman 'Perbandingan Dataset'.
+    Halaman khusus (permintaan klien/isu 8) yang berfungsi membuktikan perbedaan 
+    kualitas hasil perhitungan (Error Rate) antara data yang dibawa user saat ini 
+    dibandingkan dengan data sampel yang sangat ideal.
+    """
     page_header(
         "Perbandingan Dataset",
         "Membandingkan kualitas data yang sedang kamu analisis dengan standar data ideal.",
         "⚖️",
     )
 
+    # Tarik data aktif user saat ini dari memori
     ts_user = st.session_state.get(SS_TIME_SERIES)
     cat_user = st.session_state.get(SS_SELECTED_CATEGORY, "Keseluruhan")
     freq_user = st.session_state.get(SS_DATA_FREQUENCY, "—")
 
+    # Wajib ada data sebelum membuka ini
     if ts_user is None:
         show_warning("Belum ada data time series yang aktif. Silakan selesaikan tahap Transformasi terlebih dahulu.")
         if st.button("← Kembali ke Transformasi"):
@@ -85,6 +110,7 @@ def render():
     show_section_title("📂 Perbandingan Data")
     col_a, col_b = st.columns(2)
 
+    # Kotak kiri: Fakta tentang data user
     with col_a:
         n_user = len(ts_user)
         clean_user = st.session_state.get(SS_CLEAN_DATA)
@@ -115,6 +141,7 @@ def render():
             unsafe_allow_html=True,
         )
 
+    # Kotak kanan: Fakta tentang data referensi (idealnya)
     with col_b:
         n_ref_per_cat = ref.get("n_obs_per_cat", ref.get("n_obs", 0))
         n_ref_cats    = ref.get("n_cats", 1)
@@ -144,6 +171,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Perbandingan Jumlah Observasi ─────────────────────────
+    # Mempertegas selisih/kekurangan panjang data yang dimiliki user
     show_section_title("📊 Perbandingan Jumlah Observasi")
     show_metrics_row([
         {"label": "Obs./Prodi (Saat Ini)",  "value": str(n_user),              "color": color_u},
@@ -155,6 +183,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Visualisasi Tren: SEMUA PRODI per sisi ──────────────────
+    # Menandingkan secara visual bentuk grafik keduanya
     show_section_title("📈 Visualisasi Tren Seluruh Program Studi")
     show_info("💡 Setiap garis mewakili satu Program Studi. Perhatikan perbedaan skala waktu dan kepadatan data antara kedua dataset.")
     col_c, col_d = st.columns(2)
@@ -162,6 +191,7 @@ def render():
     with col_c:
         st.markdown("**⏰ Data Diunggah (Semua Prodi)**")
         clean_user = st.session_state.get(SS_CLEAN_DATA)
+        # Jika memang ada kolom kategori yang lebih dari 1 prodi
         if clean_user is not None and "kategori" in clean_user.columns:
             fig_u = chart_multi_category_trend(
                 clean_user, col_period="periode", col_value="nilai", col_category="kategori",
@@ -189,11 +219,12 @@ def render():
             else:
                 st.warning(f"Data referensi tidak dapat dimuat: {ref.get('error', '')}")
 
-    # ts_ref untuk evaluasi model di bawah
+    # ts_ref dipakai untuk dihitung metriknya di tahap selanjutnya
     ts_ref = ref.get("ts")
 
 
     # ── Perbandingan Evaluasi Model ───────────────────────────
+    # Ini inti halaman: "Mengadu" akurasi prediksi data user versus data ideal secara head-to-head.
     show_section_title("📏 Perbandingan Metrik Evaluasi Model")
     show_info("Model SARIMA berjalan di latar belakang untuk membandingkan seberapa akurat prediksi pada data saat ini vs data ideal.")
 
@@ -209,9 +240,9 @@ def render():
             ("MAPE", f"{metrics_u.get('MAPE', 0):.2f}%",      f"{metrics_r.get('MAPE', 0):.2f}%"),
         ]
         
-        # Highlight mana yang lebih baik (lebih kecil lebih baik)
+        # Highlight mana yang lebih baik (lebih kecil nilainya, lebih baik/hijau/tebal)
         def highlight(val_u, val_r):
-            # Simplifikasi perbandingan dengan mengambil angka mentah (buang %, titik, koma)
+            # Simplifikasi string angka ke float (buang % dan koma pemisah ribuan)
             try:
                 num_u = float(val_u.replace('%','').replace(',',''))
                 num_r = float(val_r.replace('%','').replace(',',''))
@@ -229,6 +260,7 @@ def render():
             </tr>"""
             for r in comparison_rows
         )
+        # Gambarkan tabel hasil perbandingan secara custom
         st.markdown(
             f"""
             <div class="sarima-card">
@@ -255,7 +287,7 @@ def render():
     # ── Interpretasi ─────────────────────────────────────────
     show_section_title("🔍 Interpretasi Perbandingan")
     
-    # Berikan interpretasi dinamis berdasarkan observasi
+    # Berikan interpretasi dinamis secara otomatis berdasarkan observasi yang dipunya user
     if n_user >= 30:
         interpretasi_text = "Data yang kamu gunakan saat ini sudah memiliki jumlah observasi yang cukup memadai (Mirip dengan dataset referensi). Model SARIMA seharusnya bisa mengenali pola historis dengan sangat baik."
     else:

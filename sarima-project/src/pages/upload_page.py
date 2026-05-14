@@ -1,4 +1,4 @@
-# ============================================================
+kamu # ============================================================
 # upload_page.py — Halaman Upload Dataset (Issue 2&3)
 # ============================================================
 
@@ -15,15 +15,22 @@ from src.utils.constants import (
 
 
 def render():
+    """
+    M-render isi halaman 'Upload Dataset'.
+    Halaman tempat masuknya data (Pintu Gerbang). Pengguna mengunggah CSV/Excel
+    dan sistem akan menebak otomatis kolom mana yang merupakan tanggal, 
+    angka target (yang mau diramal), dan kategori.
+    """
     page_header(
         "Upload Dataset",
         "Unggah file CSV atau Excel yang berisi data historis untuk dianalisis.",
         "📤",
     )
 
-    # ── Reset ketika upload baru ──────────────────────────────
+    # ── Area Upload File ──────────────────────────────
     st.markdown('<div class="section-title">📁 Pilih File Dataset</div>', unsafe_allow_html=True)
 
+    # Komponen bawaan Streamlit untuk menangkap file dari komputer user
     uploaded_file = st.file_uploader(
         "Pilih file CSV atau Excel",
         type=["csv", "xlsx", "xls"],
@@ -32,16 +39,19 @@ def render():
     )
 
     if uploaded_file is not None:
+        # Jika file sudah masuk, segera ekstrak menjadi Pandas DataFrame
         df, err = load_file(uploaded_file)
 
         if err:
             show_error(f"Gagal membaca file: {err}")
             return
 
-        # Simpan ke session state
+        # Simpan ke memori sementara (session state)
         st.session_state[SS_RAW_DATA]         = df
         st.session_state[SS_FILE_NAME]        = uploaded_file.name
-        st.session_state[SS_VALIDATION_RESULT] = None  # Reset validasi
+        
+        # Kosongkan sisa cache dari file sebelumnya (supaya tidak numpuk/bentrok data lama)
+        st.session_state[SS_VALIDATION_RESULT] = None  
         st.session_state[SS_CLEAN_DATA]        = None
         st.session_state[SS_TIME_SERIES]       = None
 
@@ -59,6 +69,7 @@ def render():
 
         # ── Kolom yang Ditemukan ──────────────────────────────
         show_section_title("🏷️ Kolom yang Ditemukan")
+        # Membuat kapsul-kapsul warna-warni berisi nama semua kolom dari file Excel user
         cols_html = "".join(
             f'<span class="badge badge-info" style="margin:3px;">{c}</span>'
             for c in info["kolom"]
@@ -69,13 +80,14 @@ def render():
         )
 
         # ── Mapping Kolom ─────────────────────────────────────
+        # Algoritma tebak otomatis judul kolom yang di-upload user (Fuzzy matching sederhana)
         show_section_title("🗺️ Pemetaan Kolom")
         show_info("Pilih kolom yang sesuai dari dataset kamu untuk kolom-kolom wajib berikut.")
 
         all_cols  = list(df.columns)
         none_opt  = ["— (tidak ada)"]
 
-        # Coba tebak kolom berdasarkan nama
+        # Fungsi pencocok kata kunci di nama kolom
         def guess_col(keywords: list[str]) -> str:
             for kw in keywords:
                 for c in all_cols:
@@ -85,28 +97,29 @@ def render():
 
         col_a, col_b, col_c = st.columns(3)
         with col_a:
-            # Prioritaskan kolom bertipe datetime/tanggal dulu, baru fallback ke integer tahun
+            # Pengecekan cerdas untuk tanggal (Periode)
             def guess_period_col(cols: list[str]) -> str:
-                # Cek tipe data dulu — preferensikan kolom yang sudah datetime atau string tanggal
+                # Cek teks nama kolom dulu
                 date_keywords = ["tanggal", "date", "periode", "bulan", "month"]
                 year_keywords = ["tahun", "year"]
                 for kw in date_keywords:
                     for c in cols:
                         if kw.lower() in c.lower():
                             return c
-                # Coba cek apakah isinya bisa jadi tanggal nyata
+                # Jika tidak ada yang cocok namanya, coba cicipi datanya (isi baris 1-3)
                 for kw in year_keywords:
                     for c in cols:
                         if kw.lower() in c.lower():
                             try:
                                 sample = df[c].dropna().head(3)
                                 parsed = pd.to_datetime(sample, errors='coerce')
-                                # Jika parsed jadi 1970 → ini integer, skip
+                                # Pastikan bukan tahun 1970 gara-gara error parsing unix time
                                 if not all(parsed.dt.year < 1980):
                                     return c
                             except Exception:
                                 pass
                 return cols[0] if cols else none_opt[0]
+                
             default_period = guess_period_col(all_cols)
             sel_period = st.selectbox(
                 "📅 Kolom Periode *",
@@ -116,6 +129,7 @@ def render():
             )
 
         with col_b:
+            # Tebak kolom Target / Nilai y
             default_value = guess_col(["jumlah", "nilai", "value", "pendaftar", "count", "total"])
             sel_value = st.selectbox(
                 "📈 Kolom Nilai *",
@@ -125,6 +139,7 @@ def render():
             )
 
         with col_c:
+            # Tebak kolom Grup (bisa jadi kosong alias 'tidak ada')
             default_cat = guess_col(["prodi", "program_studi", "kategori", "kategory", "program", "group", "kelompok", "nama"])
             sel_category = st.selectbox(
                 "🏷️ Kolom Kategori (opsional)",
@@ -133,6 +148,7 @@ def render():
                 help="Kolom pengelompokan data (mis: nama program studi). Pilih '— (tidak ada)' jika tidak ada.",
             )
 
+        # Simpan struktur map (Peta Data) ini ke session state untuk digunakan oleh file validasi dan preprocessing
         col_mapping = {
             "periode":   sel_period,
             "nilai":     sel_value,
@@ -154,7 +170,7 @@ def render():
                 st.rerun()
 
     else:
-        # Belum ada file — tampilkan panduan
+        # Belum ada file — tampilkan panduan kosong dan template Excel yang diharapkan
         st.markdown(
             """
             <div class="sarima-card" style="text-align:center;padding:3rem 2rem;border:2px dashed rgba(33,150,243,0.3);">

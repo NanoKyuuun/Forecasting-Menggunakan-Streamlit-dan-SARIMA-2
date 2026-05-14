@@ -7,9 +7,15 @@ from src.utils.constants import PAGE_ORDER, PAGE_ICONS, APP_TITLE, APP_AUTHOR
 
 
 def render():
-    """Render halaman Beranda."""
+    """
+    M-render halaman Beranda (Home Page).
+    Halaman ini bertindak sebagai landing page yang menyambut pengguna,
+    menjelaskan tentang apa itu metode SARIMA secara singkat, dan
+    memaparkan alur kerja (workflow) dari aplikasi.
+    """
 
     # ── Hero Section ──────────────────────────────────────────
+    # Banner utama dengan warna gradien tebal (warna ditentukan di theme.py)
     st.markdown(
         f"""
         <div class="hero-container">
@@ -26,6 +32,7 @@ def render():
     )
 
     # ── Info Cards Utama ──────────────────────────────────────
+    # Menampilkan keunggulan fitur aplikasi secara ringkas
     col1, col2, col3, col4 = st.columns(4)
     cards = [
         ("🎯", "Metode", "SARIMA", "Seasonal ARIMA"),
@@ -50,6 +57,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Alur Kerja Aplikasi ───────────────────────────────────
+    # Visualisasi daftar langkah (Step-by-step) proses forecasting
     st.markdown('<div class="section-title">📋 Alur Kerja Aplikasi</div>', unsafe_allow_html=True)
 
     steps = [
@@ -85,6 +93,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Tentang Metode SARIMA ─────────────────────────────────
+    # Membahas teori SARIMA untuk audiens akademis / dosen penguji
     col_left, col_right = st.columns([3, 2])
 
     with col_left:
@@ -114,6 +123,7 @@ def render():
         )
 
     with col_right:
+        # Peringatan tentang syarat jumlah data minimal untuk SARIMA
         st.markdown('<div class="section-title">📂 Skenario Data</div>', unsafe_allow_html=True)
         st.markdown(
             """
@@ -140,6 +150,7 @@ def render():
     st.markdown("<br/>", unsafe_allow_html=True)
 
     # ── Tombol Mulai ─────────────────────────────────────────
+    # Navigasi utama menuju halaman unggah dataset
     col_btn, _, _ = st.columns([2, 2, 2])
     with col_btn:
         if st.button("📤  Mulai — Upload Dataset", type="primary", use_container_width=True):

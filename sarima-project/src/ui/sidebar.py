@@ -3,6 +3,7 @@
 # ============================================================
 
 import streamlit as st
+import streamlit.components.v1 as components
 from src.utils.constants import (
     PAGE_ORDER, PAGE_ICONS,
     SS_WORKFLOW_STATUS, SS_RAW_DATA, SS_VALIDATION_RESULT,
@@ -49,89 +50,84 @@ def _compute_workflow_status() -> dict[str, str]:
 
 def _inject_sidebar_toggle_js():
     """
-    Inject tombol ☰ floating yang muncul saat sidebar tertutup.
-    Streamlit menyembunyikan tombol buka sidebar via JavaScript,
-    sehingga CSS override tidak cukup — perlu JS injection.
+    Inject tombol ☰ floating via components.html() (iframe same-origin).
+    Menggunakan window.parent untuk akses DOM halaman utama Streamlit.
+    Lebih reliable daripada st.markdown() karena <script> selalu dieksekusi.
     """
-    st.markdown("""
-    <style>
-    /* Tombol floating untuk membuka sidebar */
-    #sarima-sidebar-open-btn {
-        position: fixed;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        z-index: 99999;
-        background: #0D3B66;
-        color: white;
-        border: none;
-        border-radius: 0 8px 8px 0;
-        width: 2rem;
-        height: 3rem;
-        cursor: pointer;
-        font-size: 1.1rem;
-        display: none;          /* default tersembunyi */
-        align-items: center;
-        justify-content: center;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        transition: all 0.2s ease;
-    }
-    #sarima-sidebar-open-btn:hover {
-        background: #0066CC;
-        width: 2.4rem;
-    }
-    </style>
-
-    <!-- Tombol floating -->
-    <button id="sarima-sidebar-open-btn" title="Buka Navigasi">☰</button>
-
+    components.html("""
     <script>
     (function() {
-        const btn = document.getElementById('sarima-sidebar-open-btn');
-        if (!btn) return;
+        const parent = window.parent;
+        const doc    = parent.document;
 
-        // Klik tombol floating → klik tombol native Streamlit
+        // ── Hapus tombol lama jika sudah ada (cegah duplikat saat rerun) ──
+        const existing = doc.getElementById('sarima-open-btn');
+        if (existing) existing.remove();
+
+        // ── Buat tombol floating ──────────────────────────────────────────
+        const btn = doc.createElement('button');
+        btn.id = 'sarima-open-btn';
+        btn.title = 'Buka Navigasi';
+        btn.innerHTML = '&#9776;'; // ☰
+        btn.style.cssText = [
+            'position:fixed',
+            'top:50%',
+            'left:0',
+            'transform:translateY(-50%)',
+            'z-index:99999',
+            'background:#0D3B66',
+            'color:#ffffff',
+            'border:none',
+            'border-radius:0 8px 8px 0',
+            'width:2rem',
+            'height:3rem',
+            'cursor:pointer',
+            'font-size:1.1rem',
+            'display:none',
+            'align-items:center',
+            'justify-content:center',
+            'box-shadow:2px 2px 10px rgba(0,0,0,0.35)',
+            'transition:width 0.2s ease',
+            'font-family:sans-serif',
+        ].join(';');
+        doc.body.appendChild(btn);
+
+        // ── Hover effect ─────────────────────────────────────────────────
+        btn.onmouseenter = () => { btn.style.width = '2.5rem'; btn.style.background = '#0066CC'; };
+        btn.onmouseleave = () => { btn.style.width = '2rem';   btn.style.background = '#0D3B66'; };
+
+        // ── Klik: cari & klik tombol native Streamlit ────────────────────
         btn.addEventListener('click', function() {
-            // Coba berbagai selector yang Streamlit gunakan
-            const selectors = [
+            const targets = [
                 '[data-testid="stSidebarCollapsedControl"] button',
                 '[data-testid="collapsedControl"] button',
                 'button[aria-label="Open sidebar"]',
                 'button[aria-label="open sidebar"]',
-                'section[data-testid="stSidebarCollapsedControl"] button',
+                '.st-emotion-cache-1dp5vir button',
             ];
-            for (const sel of selectors) {
-                const native = document.querySelector(sel);
-                if (native) { native.click(); break; }
+            for (const sel of targets) {
+                const el = doc.querySelector(sel);
+                if (el) { el.click(); return; }
             }
+            // Fallback: dispatch keyboard event (Streamlit shortcut)
+            doc.dispatchEvent(new KeyboardEvent('keydown', { key: 'b', metaKey: true, bubbles: true }));
         });
 
-        // Amati perubahan DOM: tampilkan/sembunyikan sesuai state sidebar
-        function checkSidebar() {
-            const sidebar = document.querySelector('[data-testid="stSidebar"]');
+        // ── Deteksi sidebar collapsed / expanded ─────────────────────────
+        function checkState() {
+            const sidebar = doc.querySelector('[data-testid="stSidebar"]');
             if (!sidebar) return;
-
-            // Streamlit menambahkan aria-expanded atau mengubah class saat sidebar collapsed
-            const isCollapsed =
-                sidebar.getAttribute('aria-expanded') === 'false' ||
-                sidebar.classList.contains('st-emotion-cache-collapsed') ||
-                getComputedStyle(sidebar).transform.includes('matrix') ||
-                sidebar.style.marginLeft === '-21rem' ||
-                sidebar.offsetWidth < 10;
-
-            btn.style.display = isCollapsed ? 'flex' : 'none';
+            // Sidebar dianggap collapsed jika lebar < 50px
+            const collapsed = sidebar.getBoundingClientRect().width < 50;
+            btn.style.display = collapsed ? 'flex' : 'none';
         }
 
-        // Jalankan segera dan amati perubahan
-        checkSidebar();
-        const observer = new MutationObserver(checkSidebar);
-        observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-
-        // Fallback: cek setiap 500ms (jika MutationObserver miss event)
-        setInterval(checkSidebar, 500);
+        // Poll setiap 400ms (cukup cepat, tidak boros CPU)
+        checkState();
+        setInterval(checkState, 400);
     })();
     </script>
-    """, unsafe_allow_html=True)
+    """, height=0, scrolling=False)
 
 
 def render_sidebar():

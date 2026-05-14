@@ -47,6 +47,61 @@ def inject_global_css():
         color: var(--text);
     }}
 
+    /* ── Sidebar Toggle Button (buka/tutup) ── */
+    /* Streamlit punya tombol collapse bawaan tapi tersembunyi — kita paksa tampilkan */
+    /* Selector untuk tombol toggle sidebar di berbagai versi Streamlit */
+    [data-testid="collapsedControl"],
+    button[kind="header"],
+    .st-emotion-cache-1dp5vir,
+    [data-testid="stSidebarCollapsedControl"] {{
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }}
+
+    /* Style tombol toggle agar serasi dengan tema */
+    [data-testid="collapsedControl"] button,
+    [data-testid="stSidebarCollapsedControl"] button {{
+        background-color: {COLOR_PRIMARY} !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 0 8px 8px 0 !important;
+        width: 2rem !important;
+        height: 2.5rem !important;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.2) !important;
+        transition: all 0.2s ease !important;
+    }}
+    [data-testid="collapsedControl"] button:hover,
+    [data-testid="stSidebarCollapsedControl"] button:hover {{
+        background-color: {COLOR_SECONDARY} !important;
+        box-shadow: 3px 3px 12px rgba(0,0,0,0.3) !important;
+    }}
+    /* Icon svg di dalamnya tetap putih */
+    [data-testid="collapsedControl"] button svg,
+    [data-testid="stSidebarCollapsedControl"] button svg {{
+        fill: #ffffff !important;
+        stroke: #ffffff !important;
+        color: #ffffff !important;
+    }}
+
+    /* Tombol collapse/expand yang ada di dalam sidebar (tanda >) */
+    [data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {{
+        background-color: rgba(255,255,255,0.15) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 50% !important;
+        width: 1.8rem !important;
+        height: 1.8rem !important;
+        transition: all 0.2s ease !important;
+    }}
+    [data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button:hover {{
+        background-color: rgba(255,255,255,0.25) !important;
+    }}
+    [data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button svg {{
+        fill: #ffffff !important;
+    }}
+
     /* ── Background ── */
     .stApp {{
         background-color: var(--bg) !important;

@@ -96,53 +96,22 @@ def _inject_sidebar_toggle_js():
         btn.onmouseenter = () => { btn.style.width = '2.5rem'; btn.style.background = '#0066CC'; };
         btn.onmouseleave = () => { btn.style.width = '2rem';   btn.style.background = '#0D3B66'; };
 
-        // ── Klik: simulasi full pointer sequence untuk React ─────────────
+        // ── Klik: toggle sidebar visibility ───────────────────────────────
         btn.addEventListener('click', function() {
-
-            // Helper: simulasikan klik yang React bisa kenali
-            function reactClick(el) {
-                ['pointerover','pointerenter','mouseover','mouseenter',
-                 'pointermove','mousemove',
-                 'pointerdown','mousedown',
-                 'pointerup','mouseup','click'
-                ].forEach(function(type) {
-                    el.dispatchEvent(new MouseEvent(type, {
-                        bubbles: true,
-                        cancelable: true,
-                        view: parent,
-                        composed: true,
-                    }));
+            // Cari tombol toggle sidebar bawaan Streamlit
+            const sidebarBtn = doc.querySelector('button[aria-label*="sidebar"]') || 
+                              doc.querySelector('button[aria-label*="Sidebar"]') ||
+                              doc.querySelector('[data-testid*="sidebar"] button') ||
+                              doc.querySelector('[data-testid*="Sidebar"] button');
+            
+            if (sidebarBtn) {
+                // Simulasikan klik pada tombol bawaan Streamlit
+                const event = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: parent
                 });
-            }
-
-            // Coba semua selector tombol native Streamlit
-            const targets = [
-                '[data-testid="stSidebarCollapsedControl"] button',
-                '[data-testid="collapsedControl"] button',
-                'button[aria-label="Open sidebar"]',
-                'button[aria-label="open sidebar"]',
-                'button[aria-label="Toggle sidebar visibility"]',
-                '.st-emotion-cache-1dp5vir button',
-            ];
-            let clicked = false;
-            for (const sel of targets) {
-                const el = doc.querySelector(sel);
-                if (el) {
-                    reactClick(el);
-                    clicked = true;
-                    break;
-                }
-            }
-
-            // Fallback: paksa CSS sidebar agar terlihat langsung
-            if (!clicked) {
-                const sidebar = doc.querySelector('[data-testid="stSidebar"]');
-                if (sidebar) {
-                    sidebar.style.setProperty('transform', 'none', 'important');
-                    sidebar.style.setProperty('min-width', '21rem', 'important');
-                    sidebar.style.setProperty('margin-left', '0', 'important');
-                    sidebar.style.setProperty('visibility', 'visible', 'important');
-                }
+                sidebarBtn.dispatchEvent(event);
             }
         });
 
@@ -150,12 +119,14 @@ def _inject_sidebar_toggle_js():
         function checkState() {
             const sidebar = doc.querySelector('[data-testid="stSidebar"]');
             if (!sidebar) return;
-            const collapsed = sidebar.getBoundingClientRect().width < 50;
-            btn.style.display = collapsed ? 'flex' : 'none';
+            
+            // Periksa apakah sidebar sedang collapsed
+            const isCollapsed = sidebar.getBoundingClientRect().width < 50;
+            btn.style.display = isCollapsed ? 'flex' : 'none';
         }
 
-        checkState();
-        setInterval(checkState, 400);
+        // Periksa state setiap 500ms
+        setInterval(checkState, 500);
     })();
     </script>
     """, height=0, scrolling=False)
